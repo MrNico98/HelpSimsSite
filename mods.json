@@ -38,5 +38,13 @@
     "link": "https://adeepindigomods.itch.io/delinquent-teens",
     "translation": "da-scaricare",
     "dependency": "General Pie Menus - Shared Tuning - Mood Pack - DLC Alcuni Raccomandati"
+  },
+  {
+    "modName": "PSO Shared Library",
+    "author": "Andirz",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/pso-shared-library",
+    "translation": "da-scaricare",
+    "dependency": ""
   }
 ]
