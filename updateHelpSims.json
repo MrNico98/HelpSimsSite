@@ -1,5 +1,5 @@
 { 
-    "version": "0.0.0.3", 
-    "releaseNotes": "TEST", 
-    "updateUrl": "LINKE" 
+    "version": "0.0.0.4", 
+    "releaseNotes": "Prova ufficiale aggiornamento", 
+    "updateUrl": "https://github.com/MrNico98/HelpSimsSite/releases/download/HelpSims/HelpSims.exe" 
 }
