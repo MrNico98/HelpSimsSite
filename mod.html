@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestione Mod</title>
@@ -29,9 +30,13 @@
     .status {
       color: white;
       font-weight: bold;
-      padding: 5px 10px;
+      padding: 5px;
       border-radius: 5px;
       text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+      width: 100%;
+       height: 100%;
     }
     .status.compatibile {
       background-color: blue;
@@ -64,10 +69,43 @@
       background-color: orange;
       color: black;
     }
+    .form-container {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      display: none;
+    }
+    .form-container h2 {
+      margin-top: 0;
+    }
+    button {
+      padding: 5px 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #login-container {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    #login-container input {
+      margin: 5px;
+    }
   </style>
 </head>
 <body>
   <h1>Gestione Mod</h1>
+
   <div>
     <label for="search">Cerca:</label>
     <input type="text" id="search" oninput="filterTable()" placeholder="Cerca...">
@@ -137,7 +175,79 @@
     </tbody>
   </table>
 
+  <div id="login-container">
+    <h2>Accesso per Inserimento Mod</h2>
+    <label for="username">Username:</label>
+    <input type="text" id="username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" required>
+
+    <button onclick="login()">Accedi</button>
+    <p id="login-message" style="color: red; display: none;">Accesso negato. Controlla le credenziali.</p>
+  </div>
+
+  <div class="form-container" id="add-mod-container">
+    <h2>Aggiungi Nuova Mod</h2>
+    <form id="add-mod-form">
+      <label for="author">Autore:</label>
+      <input type="text" id="author" required>
+
+      <label for="mod-name">Nome Mod:</label>
+      <input type="text" id="mod-name" required>
+
+      <label for="status">Stato:</label>
+      <select id="status" required>
+        <option value="aggiornata">Aggiornata</option>
+        <option value="compatibile">Compatibile</option>
+        <option value="rotta">Rotta</option>
+      </select>
+
+      <label for="link">Link Mod:</label>
+      <input type="url" id="link" required>
+
+      <label for="translation">Traduzione:</label>
+      <select id="translation" required>
+        <option value="inclusa">Inclusa</option>
+        <option value="non-necessaria">Non necessaria</option>
+        <option value="in-lavorazione">In lavorazione</option>
+        <option value="da-scaricare">Da scaricare</option>
+      </select>
+
+      <label for="dependency">Dipendenza:</label>
+      <input type="text" id="dependency">
+
+      <button type="button" onclick="addMod()">Aggiungi</button>
+    </form>
+  </div>
+
   <script>
+    const authorizedUsers = [
+      { username: "admin", passwordHash: "202cb962ac59075b964b07152d234b70" }, // md5 hash of "123"
+      { username: "user1", passwordHash: "81dc9bdb52d04dc20036dbd8313ed055" } // md5 hash of "1234"
+    ];
+
+    function hashPassword(password) {
+      return CryptoJS.MD5(password).toString();
+    }
+
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const passwordHash = hashPassword(password);
+
+      const user = authorizedUsers.find(
+        user => user.username === username && user.passwordHash === passwordHash
+      );
+
+      if (user) {
+        document.getElementById("login-container").style.display = "none";
+        document.getElementById("add-mod-container").style.display = "block";
+      } else {
+        document.getElementById("login-message").style.display = "block";
+      }
+    }
+
     function filterTable() {
       const searchInput = document.getElementById("search").value.toLowerCase();
       const filterStatus = document.getElementById("filter-status").value.toLowerCase();
@@ -156,6 +266,30 @@
 
         row.style.display = matchesSearch && matchesStatus && matchesTranslation ? "" : "none";
       }
+    }
+
+    function addMod() {
+      const author = document.getElementById("author").value;
+      const modName = document.getElementById("mod-name").value;
+      const status = document.getElementById("status").value;
+      const link = document.getElementById("link").value;
+      const translation = document.getElementById("translation").value;
+      const dependency = document.getElementById("dependency").value || "None";
+
+      const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
+      const newRow = table.insertRow();
+
+
+      newRow.innerHTML = `
+        <td>${author}</td>
+        <td>${modName}</td>
+        <td><span class="status ${status}">${status.toUpperCase()}</span></td>
+        <td><a href="${link}" target="_blank">Link</a></td>
+        <td><span class="traduzione ${translation}">${translation.replace("-", " ").toUpperCase()}</span></td>
+        <td>${dependency}</td>
+      `;
+
+      document.getElementById("add-mod-form").reset();
     }
   </script>
 </body>
