@@ -75,7 +75,6 @@
       border: 1px solid #ccc;
       border-radius: 5px;
       background-color: #f9f9f9;
-      display: none;
     }
     .form-container h2 {
       margin-top: 0;
@@ -90,16 +89,6 @@
     }
     button:hover {
       background-color: #0056b3;
-    }
-    #login-container {
-      margin-bottom: 20px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background-color: #f9f9f9;
-    }
-    #login-container input {
-      margin: 5px;
     }
   </style>
 </head>
@@ -144,18 +133,6 @@
     </tbody>
   </table>
 
-  <div id="login-container">
-    <h2>Accesso per Inserimento Mod</h2>
-    <label for="username">Username:</label>
-    <input type="text" id="username" required>
-
-    <label for="password">Password:</label>
-    <input type="password" id="password" required>
-
-    <button onclick="login()">Accedi</button>
-    <p id="login-message" style="color: red; display: none;">Accesso negato. Controlla le credenziali.</p>
-  </div>
-
   <div class="form-container" id="add-mod-container">
     <h2>Aggiungi Nuova Mod</h2>
     <form id="add-mod-form">
@@ -191,32 +168,6 @@
   </div>
 
   <script>
-    const authorizedUsers = [
-      { username: "admin", passwordHash: "202cb962ac59075b964b07152d234b70" }, // md5 hash of "123"
-      { username: "user1", passwordHash: "81dc9bdb52d04dc20036dbd8313ed055" } // md5 hash of "1234"
-    ];
-
-    function hashPassword(password) {
-      return CryptoJS.MD5(password).toString();
-    }
-
-    function login() {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
-      const passwordHash = hashPassword(password);
-
-      const user = authorizedUsers.find(
-        user => user.username === username && user.passwordHash === passwordHash
-      );
-
-      if (user) {
-        document.getElementById("login-container").style.display = "none";
-        document.getElementById("add-mod-container").style.display = "block";
-      } else {
-        document.getElementById("login-message").style.display = "block";
-      }
-    }
-
     function filterTable() {
       const searchInput = document.getElementById("search").value.toLowerCase();
       const filterStatus = document.getElementById("filter-status").value.toLowerCase();
@@ -237,27 +188,27 @@
       }
     }
 
-function loadModsFromJson() {
-  // Modifica l'URL con quello del tuo file JSON su GitHub
-  fetch('https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/mods.json')
-    .then(response => response.json())
-    .then(mods => {
-      // Quando il JSON è caricato, popola la tabella
-      const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
-      mods.forEach(mod => {
-        const newRow = table.insertRow();
-        newRow.innerHTML = `
-          <td>${mod.author}</td>
-          <td>${mod.modName}</td>
-          <td><span class="status ${mod.status}">${mod.status.toUpperCase()}</span></td>
-          <td><a href="${mod.link}" target="_blank">Link</a></td>
-          <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
-          <td>${mod.dependency || 'None'}</td>
-        `;
-      });
-    })
-    .catch(error => console.error('Errore nel caricare il JSON:', error));
-}
+    function loadModsFromJson() {
+      // Modifica l'URL con quello del tuo file JSON su GitHub
+      fetch('https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/mods.json')
+        .then(response => response.json())
+        .then(mods => {
+          // Quando il JSON è caricato, popola la tabella
+          const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
+          mods.forEach(mod => {
+            const newRow = table.insertRow();
+            newRow.innerHTML = `
+              <td>${mod.author}</td>
+              <td>${mod.modName}</td>
+              <td><span class="status ${mod.status}">${mod.status.toUpperCase()}</span></td>
+              <td><a href="${mod.link}" target="_blank">Link</a></td>
+              <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
+              <td>${mod.dependency || 'None'}</td>
+            `;
+          });
+        })
+        .catch(error => console.error('Errore nel caricare il JSON:', error));
+    }
 
     // Carica le mod all'inizio quando la pagina si carica
     window.onload = loadModsFromJson;
