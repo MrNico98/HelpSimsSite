@@ -133,40 +133,6 @@
     </tbody>
   </table>
 
-  <div class="form-container" id="add-mod-container">
-    <h2>Aggiungi Nuova Mod</h2>
-    <form id="add-mod-form">
-      <label for="author">Autore:</label>
-      <input type="text" id="author" required>
-
-      <label for="mod-name">Nome Mod:</label>
-      <input type="text" id="mod-name" required>
-
-      <label for="status">Stato:</label>
-      <select id="status" required>
-        <option value="aggiornata">Aggiornata</option>
-        <option value="compatibile">Compatibile</option>
-        <option value="rotta">Rotta</option>
-      </select>
-
-      <label for="link">Link Mod:</label>
-      <input type="url" id="link" required>
-
-      <label for="translation">Traduzione:</label>
-      <select id="translation" required>
-        <option value="inclusa">Inclusa</option>
-        <option value="non-necessaria">Non necessaria</option>
-        <option value="in-lavorazione">In lavorazione</option>
-        <option value="da-scaricare">Da scaricare</option>
-      </select>
-
-      <label for="dependency">Dipendenza:</label>
-      <input type="text" id="dependency">
-
-      <button type="button" onclick="addMod()">Aggiungi</button>
-    </form>
-  </div>
-
   <script>
     function filterTable() {
       const searchInput = document.getElementById("search").value.toLowerCase();
@@ -212,29 +178,6 @@
 
     // Carica le mod all'inizio quando la pagina si carica
     window.onload = loadModsFromJson;
-
-    function addMod() {
-      const author = document.getElementById("author").value;
-      const modName = document.getElementById("mod-name").value;
-      const status = document.getElementById("status").value;
-      const link = document.getElementById("link").value;
-      const translation = document.getElementById("translation").value;
-      const dependency = document.getElementById("dependency").value || "None";
-
-      const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
-      const newRow = table.insertRow();
-
-      newRow.innerHTML = `
-        <td>${author}</td>
-        <td>${modName}</td>
-        <td><span class="status ${status}">${status.toUpperCase()}</span></td>
-        <td><a href="${link}" target="_blank">Link</a></td>
-        <td><span class="traduzione ${translation}">${translation.replace("-", " ").toUpperCase()}</span></td>
-        <td>${dependency}</td>
-      `;
-
-      document.getElementById("add-mod-form").reset();
-    }
   </script>
 </body>
 </html>
