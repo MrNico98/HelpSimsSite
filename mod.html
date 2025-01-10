@@ -237,27 +237,27 @@
       }
     }
 
-    function loadModsFromJson() {
-      // Carica il JSON (qui si suppone che il file JSON si chiami "mods.json")
-      fetch('mods.json')
-        .then(response => response.json())
-        .then(mods => {
-          // Quando il JSON è caricato, popola la tabella
-          const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
-          mods.forEach(mod => {
-            const newRow = table.insertRow();
-            newRow.innerHTML = `
-              <td>${mod.author}</td>
-              <td>${mod.modName}</td>
-              <td><span class="status ${mod.status}">${mod.status.toUpperCase()}</span></td>
-              <td><a href="${mod.link}" target="_blank">Link</a></td>
-              <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
-              <td>${mod.dependency || 'None'}</td>
-            `;
-          });
-        })
-        .catch(error => console.error('Errore nel caricare il JSON:', error));
-    }
+function loadModsFromJson() {
+  // Modifica l'URL con quello del tuo file JSON su GitHub
+  fetch('https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/mods.json')
+    .then(response => response.json())
+    .then(mods => {
+      // Quando il JSON è caricato, popola la tabella
+      const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
+      mods.forEach(mod => {
+        const newRow = table.insertRow();
+        newRow.innerHTML = `
+          <td>${mod.author}</td>
+          <td>${mod.modName}</td>
+          <td><span class="status ${mod.status}">${mod.status.toUpperCase()}</span></td>
+          <td><a href="${mod.link}" target="_blank">Link</a></td>
+          <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
+          <td>${mod.dependency || 'None'}</td>
+        `;
+      });
+    })
+    .catch(error => console.error('Errore nel caricare il JSON:', error));
+}
 
     // Carica le mod all'inizio quando la pagina si carica
     window.onload = loadModsFromJson;
