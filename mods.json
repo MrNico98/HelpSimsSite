@@ -14,5 +14,13 @@
     "link": "https://example.com",
     "translation": "non-necessaria",
     "dependency": "23"
+  },
+  {
+    "modName": "Sticazzi ",
+    "author": "Cazzi",
+    "status": "compatibile",
+    "link": "",
+    "translation": "inclusa",
+    "dependency": ""
   }
 ]
