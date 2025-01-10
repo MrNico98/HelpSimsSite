@@ -2,17 +2,17 @@
   {
     "author": "Mario Rossi",
     "modName": "Mod1",
-    "status": "aggiornata",
+    "status": "Compatibile",
     "link": "https://example.com",
-    "translation": "inclusa",
+    "translation": "Inclusa",
     "dependency": "Altro Mod"
   },
   {
     "author": "Luigi Verdi",
     "modName": "Mod2",
-    "status": "compatibile",
+    "status": "Compatibile",
     "link": "https://example.com",
-    "translation": "non-necessaria",
-    "dependency": "Test"
+    "translation": "Inclusa",
+    "dependency": "23"
   }
 ]
