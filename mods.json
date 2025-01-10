@@ -13,6 +13,6 @@
     "status": "compatibile",
     "link": "https://example.com",
     "translation": "non-necessaria",
-    "dependency": "None"
+    "dependency": "Test"
   }
 ]
