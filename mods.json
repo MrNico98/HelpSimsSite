@@ -98,9 +98,81 @@
   {
     "author": "Adeepindigo",
     "modName": "General Pie Menus",
-    "status": "NON NECESSARIA",
+    "status": "non necessaria",
     "link": "https://adeepindigomods.itch.io/utility-mods",
     "translation": "Basta INSTALLARNE UNA per tutte le sue mod",
+    "dependency": ""
+  },
+    {
+    "author": "Adeepindigo",
+    "modName": "Healthcare Redux",
+    "status": "da scaricare",
+    "link": "https://adeepindigomods.itch.io/healthcare-redux",
+    "translation": "Mood Pack - General Pie Menus - DLC Al Lavoro",
+    "dependency": ""
+  },
+  {
+    "author": "Adeepindigo",
+    "modName": "Healthy Living",
+    "status": "AGGIORNATA",
+    "link": "https://adeepindigomods.itch.io/healthy-living",
+    "translation": "General Pie Menus",
+    "dependency": ""
+  },
+  {
+    "author": "Adeepindigo",
+    "modName": "Shared Library",
+    "status": "OBSOLETA",
+    "link": "",
+    "translation": "SOSTITUITA con la Core Library di Lot51",
+    "dependency": ""
+  },
+  {
+    "author": "Adeepindigo",
+    "modName": "Shared Tuning",
+    "status": "non necessaria",
+    "link": "https://adeepindigomods.itch.io/utility-mods",
+    "translation": "Basta INSTALLARNE UNA per tutte le sue mod",
+    "dependency": ""
+  },
+  {
+    "author": "Adeepindigo",
+    "modName": "SimNation Travel",
+    "status": "da scaricare",
+    "link": "https://adeepindigomods.itch.io/simnation-travel",
+    "translation": "General Pie Menus - DLC Alcuni Raccomandati",
+    "dependency": ""
+  },
+  {
+    "author": "Adeepindigo",
+    "modName": "Summer Camps",
+    "status": "da scaricare",
+    "link": "https://adeepindigomods.itch.io/summer-camps",
+    "translation": "DLC Stagioni",
+    "dependency": ""
+  },
+  {
+    "author": "Adeepindigo",
+    "modName": "Tattoo Parlor",
+    "status": "da scaricare",
+    "link": "https://www.patreon.com/posts/rabbithole-mods-84780425",
+    "translation": "General Pie Menus - Core Library",
+    "dependency": ""
+  },
+  {
+    "author": "Adeepindigo",
+    "modName": "Writing and Writer Career Overhaul",
+    "status": "da scaricare",
+    "link": "https://adeepindigomods.itch.io/writing-and-writer-career-overhaul",
+    "translation": "General Pie Menus - DLC Alcuni Raccomandati",
+    "dependency": ""
+  },
+  {
+    "author": "Adeepindigomods/ItsKatato",
+    "modName": "Preteens",
+    "status": "da scaricare",
+    "link": "https://adeepindigomods.itch.io/itskatato-preteen-mod",
+    "translation": "General Pie Menus - Mood Pack - DLC Raccomandati (Genitorialità - Oasi Innevata)",
     "dependency": ""
   }
 ]
