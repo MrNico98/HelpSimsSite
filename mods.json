@@ -114,7 +114,7 @@
   {
     "author": "Adeepindigo",
     "modName": "Healthy Living",
-    "status": "AGGIORNATA",
+    "status": "aggiornata",
     "link": "https://adeepindigomods.itch.io/healthy-living",
     "translation": "General Pie Menus",
     "dependency": ""
@@ -174,5 +174,677 @@
     "link": "https://adeepindigomods.itch.io/itskatato-preteen-mod",
     "translation": "General Pie Menus - Mood Pack - DLC Raccomandati (Genitorialità - Oasi Innevata)",
     "dependency": ""
+  },
+   {
+    "author": "Andirz",
+    "modName": "Sim-Nom-Nom Food Delivery",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/simnomnom-delivery",
+    "translation": "da-scaricare",
+    "dependency": "PSO Shared Library - Core Library"
+  },
+  {
+    "author": "Andirz",
+    "modName": "SimSim Online Store",
+    "status": "aggiornata",
+    "link": "https://www.curseforge.com/sims4/mods/simsim-online-store",
+    "translation": "da-scaricare",
+    "dependency": "PSO Shared Library - Core Library"
+  },
+  {
+    "author": "Andirz",
+    "modName": "Smart Gender Cheats",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/smart-gender-cheats",
+    "translation": "da-scaricare",
+    "dependency": "Core Library - Smart Shared Core"
+  },
+  {
+    "author": "Andirz",
+    "modName": "Smart Shared Core",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/smart-shared-core",
+    "translation": "da-scaricare",
+    "dependency": "Core Library"
+  },
+  {
+    "author": "Andirz",
+    "modName": "Smart Sim Cheats",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/smart-sim-cheats",
+    "translation": "da-scaricare",
+    "dependency": "Core Library - Smart Shared Core"
+  },
+  {
+    "author": "Andirz",
+    "modName": "Smart Sim Randomizer",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/smart-sim-randomizer",
+    "translation": "da-scaricare",
+    "dependency": "Core Library - Smart Shared Core"
+  },
+  {
+    "author": "Andirz",
+    "modName": "University Skill Class Tweaks",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/university-skill-class-tweaks",
+    "translation": "non-necessaria",
+    "dependency": "DLC Vita Universitaria"
+  },
+  {
+    "author": "Andirz",
+    "modName": "Visible Handedness",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/visible-handedness",
+    "translation": "non-necessaria",
+    "dependency": ""
+  },
+  {
+    "author": "Andrew",
+    "modName": "Pose Player",
+    "status": "compatibile",
+    "link": "https://sims4studio.com/post/43313",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "Basemental",
+    "modName": "Universal Venue List",
+    "status": "aggiornata",
+    "link": "https://basementalcc.com/mods/universal-venue-list/",
+    "translation": "non-necessaria",
+    "dependency": ""
+  },
+  {
+    "author": "Batsandbabydolls",
+    "modName": "Trick or Treat Tradition Overhaul",
+    "status": "",
+    "link": "https://www.tumblr.com/alice-in-strangetown/764069502996643840/trick-or-treat-tradition-overhaul",
+    "translation": "da-scaricare",
+    "dependency": "XML Injector - DLC Stagioni"
+  },
+  {
+    "author": "BosseladyTV",
+    "modName": "Paranormal Career",
+    "status": "",
+    "link": "https://www.curseforge.com/sims4/mods/paranormal-career",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "Carl's Guides",
+    "modName": "Dine Out Reloaded",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/dine-out-v2-64188681",
+    "translation": "da-scaricare",
+    "dependency": "DLC Mangiamo Fuori"
+  },
+  {
+    "author": "Carl's Guides",
+    "modName": "Sim Spawner & Filter Tool",
+    "status": "",
+    "link": "https://www.patreon.com/posts/69926725",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "Cassity Simmer",
+    "modName": "Celebrate Adoption",
+    "status": "",
+    "link": "https://www.patreon.com/posts/celebrate-sims-4-83151418",
+    "translation": "da-scaricare",
+    "dependency": "DLC Genitorialità"
+  },
+  {
+    "author": "Cowplant's Cake",
+    "modName": "New Random Names",
+    "status": "",
+    "link": "https://modthesims.info/d/633909/new-townie-and-random-names.html",
+    "translation": "non-necessaria",
+    "dependency": ""
+  },
+  {
+    "author": "Danitysimmer",
+    "modName": "Fashion Designer Mod",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/fashion-designer-105152706",
+    "translation": "da-scaricare",
+    "dependency": "Mood Pack - Core Library - Universal Venue List - DLC Al Lavoro, Nuove Stelle, Vita Universitaria, Usciamo Insieme"
+  },
+  {
+    "author": "Danitysimmer",
+    "modName": "SBA/NBA Career",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/97965674",
+    "translation": "da-scaricare",
+    "dependency": "Core Library - Mood Pack - General Sports Pie Menu"
+  },
+  {
+    "author": "Danitysimmer",
+    "modName": "WNBA (WSBA) Career",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/wnba-wsba-career-96813282",
+    "translation": "da-scaricare",
+    "dependency": "Core Library - Mood Pack - General Sports Pie Menu"
+  },
+  {
+    "author": "Deaderpool",
+    "modName": "MC Command Center",
+    "status": "aggiornata",
+    "link": "https://deaderpool-mccc.com/downloads.html",
+    "translation": "inclusa",
+    "dependency": ""
+  },
+  {
+    "author": "Digitprojectart",
+    "modName": "Zodiac Signs",
+    "status": "",
+    "link": "https://www.curseforge.com/sims4/mods/zodiac-signs-by-digit-part",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "Frankk",
+    "modName": "Language Barriers",
+    "status": "",
+    "link": "https://frankkmods.com/#/mods/language-barriers",
+    "translation": "da-scaricare",
+    "dependency": "DLC Facoltativi"
+  },
+  {
+    "author": "Frankk",
+    "modName": "Pack Tests",
+    "status": "",
+    "link": "https://frankkmods.com/#/mods/pack-tests",
+    "translation": "non-necessaria",
+    "dependency": ""
+  },
+  {
+    "author": "Gauntlet101010",
+    "modName": "Reaper Actions Unlocker",
+    "status": "aggiornata",
+    "link": "https://www.curseforge.com/sims4/mods/reaper-actions-unlocker",
+    "translation": "non-necessaria",
+    "dependency": ""
+  },
+  {
+    "author": "JaneSimsten",
+    "modName": "Regency Romance",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/71308728",
+    "translation": "da-scaricare",
+    "dependency": "XML Injector"
+  },
+  {
+    "author": "JaneSimsten",
+    "modName": "Rideable Dragons",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/mod-rideable-116233866?utm_campaign=patron_engagement&utm_source=post_link&post_id=116233866&utm_id=0c4f54c0-49d4-493d-ba3b-5c5225dc1ae0&utm_medium=email",
+    "translation": "da-scaricare",
+    "dependency": "DLC Vita in Campagna"
+  },
+  {
+    "author": "JaneSimsten",
+    "modName": "Secret Occults",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/mod-secret-92031811",
+    "translation": "da-scaricare",
+    "dependency": "The Custom Preferences Mod"
+  },
+    {
+    "author": "JaneSimsten",
+    "modName": "Soulmates",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/mod-soulmates-78603754",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "KawaiiStacie",
+    "modName": "Slice of Life",
+    "status": "rotta",
+    "link": "https://www.kawaii-stacie.com/post/slice-of-life-mod",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "KaylaDot",
+    "modName": "Join Homework",
+    "status": "",
+    "link": "https://www.curseforge.com/sims4/mods/join-homework",
+    "translation": "da-scaricare",
+    "dependency": "Core Library"
+  },
+  {
+    "author": "KiaraSims4Mods",
+    "modName": "Child of the Ocean Trait",
+    "status": "compatibile",
+    "link": "https://legacy.curseforge.com/sims4/mods/child-of-the-ocean-trait",
+    "translation": "da-scaricare",
+    "dependency": "DLC Vita sull'Isola"
+  },
+  {
+    "author": "KiaraSims4Mods",
+    "modName": "Elenco Generale",
+    "status": "compatibile",
+    "link": "https://docs.google.com/spreadsheets/d/1Rk3K_Z_6Wf1t5V02PDA008wOOKfKjVwIWpw8mlglngM/edit?gid=1364221733#gid=1364221733",
+    "translation": "",
+    "dependency": "XML Injector"
+  },
+  {
+    "author": "KiaraSims4Mods",
+    "modName": "Firefighter Career",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/firefighter-career",
+    "translation": "da-scaricare",
+    "dependency": "XML Injector"
+  },
+  {
+    "author": "KiaraSims4Mods",
+    "modName": "Fortune Teller Career",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/fortune-teller-career",
+    "translation": "da-scaricare",
+    "dependency": "XML Injector - DLC Fenomeni Paranormali"
+  },
+  {
+    "author": "KiaraSims4Mods",
+    "modName": "Geologist Career",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/geologist-career",
+    "translation": "da-scaricare",
+    "dependency": "XML Injector - DLC Usciamo Insieme - DLC Al Lavoro - DLC Avventura nella Giungla"
+  },
+  {
+    "author": "KiaraSims4Mods",
+    "modName": "Higher Education (Active) Career",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/higher-education-active-career",
+    "translation": "da-scaricare",
+    "dependency": "XML Injector - Universal Venue List - Work Interactions Pie Menu - DLC Vita Universitaria - DLC Al Lavoro"
+  },
+  {
+    "author": "KiaraSims4Mods",
+    "modName": "Lawyer (Active) Career",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/lawyer-active-career",
+    "translation": "da-scaricare",
+    "dependency": "XML Injector - Universal Venue List - DLC Vita Universitaria - DLC Al Lavoro"
+  },
+  {
+    "author": "KiaraSims4Mods",
+    "modName": "Model Career",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/model-career",
+    "translation": "da-scaricare",
+    "dependency": "XML Injector - DLC Vita in Città - DLC Nuove Stelle - DLC Moschino Stuff"
+  },
+  {
+    "author": "KiaraSims4Mods",
+    "modName": "Resort Owner (Active) Career",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/resort-owner-active-career",
+    "translation": "da-scaricare",
+    "dependency": "XML Injector - Universal Venue List - Work Interactions Pie Menu - DLC Al Lavoro - DLC Un Giorno alla Spa"
+  },
+  {
+    "author": "KiaraSims4Mods",
+    "modName": "Stylist (Active) Career",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/stylist-active-career",
+    "translation": "da-scaricare",
+    "dependency": "XML Injector - Universal Venue List - DLC Al Lavoro - DLC Nuove Stelle"
+  },
+  {
+    "author": "KiaraSims4Mods",
+    "modName": "Video Game Developer Career",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/video-game-developer-career",
+    "translation": "da-scaricare",
+    "dependency": "XML Injector"
+  },
+  {
+    "author": "KiaraSims4Mods",
+    "modName": "Work Interactions Pie Menu",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/work-interactions",
+    "translation": "da-scaricare",
+    "dependency": "XML Injector"
+  },
+  {
+    "author": "LittleMsSam",
+    "modName": "Elenco Generale",
+    "status": "compatibile",
+    "link": "https://littlemssam.tumblr.com/",
+    "translation": "inclusa",
+    "dependency": "XML Injector"
+  },
+  {
+    "author": "llazyneiph",
+    "modName": "Royalty Mod",
+    "status": "",
+    "link": "https://www.patreon.com/posts/royalty-mod-3-4-115660572",
+    "translation": "da-scaricare",
+    "dependency": "Core Library - XML Injector - Pack Tests"
+  },
+  {
+    "author": "LoryNa",
+    "modName": "Carriera Genitore a Casa",
+    "status": "",
+    "link": "https://loryy2818.wixsite.com/lory-na-traduzioni/le-mie-mods#career---parent-at-home",
+    "translation": "inclusa",
+    "dependency": "XML Injector - DLC Vita da Genitori"
+  },
+  {
+    "author": "LoryNa",
+    "modName": "Carriera Modder - Attiva",
+    "status": "",
+    "link": "https://loryy2818.wixsite.com/lory-na-traduzioni/le-mie-mods#carrieramodder",
+    "translation": "inclusa",
+    "dependency": "XML Injector - DLC Al Lavoro"
+  },
+  {
+    "author": "LoryNa",
+    "modName": "Halloween Special Recipes",
+    "status": "",
+    "link": "https://loryy2818.wixsite.com/lory-na-traduzioni/le-mie-mods#halloweenspecialrecipes",
+    "translation": "inclusa",
+    "dependency": "XML Injector - DLC Accessorio da Brivido"
+  },
+  {
+    "author": "LoryNa",
+    "modName": "Maggiori Interazioni di Gravidanza",
+    "status": "",
+    "link": "https://loryy2818.wixsite.com/lory-na-traduzioni/le-mie-mods#epimod",
+    "translation": "inclusa",
+    "dependency": "XML Injector - Mood Pack"
+  },
+  {
+    "author": "LoryNa",
+    "modName": "Mod Stili Genitoriali",
+    "status": "",
+    "link": "https://loryy2818.wixsite.com/lory-na-traduzioni/update-aggiornamento#parentingstyleupdated",
+    "translation": "inclusa",
+    "dependency": "XML Injector - DLC Vita da Genitori"
+  },
+  {
+    "author": "LoryNa",
+    "modName": "Scoperte Giovanili",
+    "status": "",
+    "link": "https://loryy2818.wixsite.com/lory-na-traduzioni/le-mie-mods#youthfuldiscoveriesmod",
+    "translation": "inclusa",
+    "dependency": "XML Injector - Mood Pack"
+  },
+    {
+    "author": "LoryNa",
+    "modName": "Sweet Simsmas Ricette",
+    "status": "aggiornata",
+    "link": "https://www.curseforge.com/sims4/mods/sweet-simsmas-recipes-3",
+    "translation": "INCLUSA",
+    "dependency": "XML Injector"
+  },
+  {
+    "author": "Lot 51",
+    "modName": "Core Library",
+    "status": "aggiornata",
+    "link": "https://lot51.cc/core",
+    "translation": "NON NECESSARIA",
+    "dependency": ""
+  },
+  {
+    "author": "Lot 51",
+    "modName": "Ding & Ditch Smart Doorbell",
+    "status": "compatibile",
+    "link": "https://lot51.cc/mods/smart-doorbell",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "Lot 51",
+    "modName": "Free-Range",
+    "status": "compatibile",
+    "link": "https://lot51.cc/mods/free-range",
+    "translation": "",
+    "dependency": "DLC Vita in Campagna"
+  },
+  {
+    "author": "Lot 51",
+    "modName": "Suite Life",
+    "status": "aggiornata",
+    "link": "https://lot51.cc/mods/suite-life",
+    "translation": "da-scaricare",
+    "dependency": "Core Library - Universal Venue List"
+  },
+  {
+    "author": "Lumpinou",
+    "modName": "Additional In-Date Choices",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/109198259",
+    "translation": "IN LAVORAZIONE",
+    "dependency": "Toolbox"
+  },
+  {
+    "author": "Lumpinou",
+    "modName": "End Friendship",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/mod-end-mod-for-112382548",
+    "translation": "IN LAVORAZIONE",
+    "dependency": "Toolbox"
+  },
+  {
+    "author": "Lumpinou",
+    "modName": "LGBTQIA+: Gender & Orientation Overhaul",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/lgbtqia-mod-v1-1-68337709",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "Lumpinou",
+    "modName": "Lovestruck: Choose Turn Ons & Turns Offs in Live Mode",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/mod-lovestruck-108890115",
+    "translation": "IN LAVORAZIONE",
+    "dependency": "Toolbox - DLC Colpo di Fulmine"
+  },
+  {
+    "author": "Lumpinou",
+    "modName": "Lovestruck: Teens' Cupid's Corner",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/mod-lovestruck-4-108998699",
+    "translation": "NON NECESSARIA",
+    "dependency": "DLC Colpo di Fulmine"
+  },
+  {
+    "author": "Lumpinou",
+    "modName": "Milestone Cheats",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/80693931",
+    "translation": "da-scaricare",
+    "dependency": "DLC Cresciamo Insieme"
+  },
+  {
+    "author": "Lumpinou",
+    "modName": "Milestones Expanded",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/mod-milestones-4-80639650",
+    "translation": "da-scaricare",
+    "dependency": "DLC Cresciamo Insieme"
+  },
+  {
+    "author": "Lumpinou",
+    "modName": "Mood Pack Mod",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/43759541",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "Lumpinou",
+    "modName": "Rambunctious Religions",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/rambunctious-now-39824076",
+    "translation": "da-scaricare",
+    "dependency": "Toolbox"
+  },
+  {
+    "author": "Lumpinou",
+    "modName": "Road to Romance",
+    "status": "aggiornata",
+    "link": "https://www.patreon.com/posts/road-to-romance-39785932",
+    "translation": "da-scaricare",
+    "dependency": "Toolbox - Mood Pack"
+  },
+  {
+    "author": "Lumpinou",
+    "modName": "RPO Relationship & Pregnancy Overhaul",
+    "status": "aggiornata",
+    "link": "https://www.patreon.com/posts/118377994",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "Lumpinou",
+    "modName": "Say Something To",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/110042191",
+    "translation": "IN LAVORAZIONE",
+    "dependency": "Toolbox"
+  },
+  {
+    "author": "Lumpinou",
+    "modName": "Science Baby Tweak",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/mod-science-baby-80018691",
+    "translation": "da-scaricare",
+    "dependency": "Toolbox"
+  },
+  {
+    "author": "Lumpinou",
+    "modName": "Toolbox",
+    "status": "aggiornata",
+    "link": "https://www.patreon.com/posts/86658397?utm_campaign=postshare_fan",
+    "translation": "NON NECESSARIA",
+    "dependency": ""
+  },
+  {
+    "author": "LuSimLaStars",
+    "modName": "Mourning Talk - Funeral, Grief Talk Interactions",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/mourning-talk-110499981",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "Maplebell",
+    "modName": "More Kisses",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/more-kisses-mod-113334741",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "MizoreYukii",
+    "modName": "Arranged Marriages",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/61538738",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "MizoreYukii",
+    "modName": "Skip CAS Stories",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/65743472",
+    "translation": "NON NECESSARIA",
+    "dependency": ""
+  },
+  {
+    "author": "NerdyDoll",
+    "modName": "Gift Delivery Mod",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/gift-delivery-mod",
+    "translation": "da-scaricare",
+    "dependency": "Core Library"
+  },
+  {
+    "author": "NickyClem",
+    "modName": "Appliance Insurance",
+    "status": "aggiornata",
+    "link": "https://nickyclem.itch.io/appliance-insurance",
+    "translation": "da-scaricare",
+    "dependency": "XML Injector - Insurance Company Phone App & Computer Menu"
+  },
+  {
+    "author": "NickyClem",
+    "modName": "EMA Phone Menu",
+    "status": "compatibile",
+    "link": "https://nickyclem.itch.io/ema-phone-menu",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "NickyClem",
+    "modName": "Insurance Company Phone App & Computer Menu",
+    "status": "compatibile",
+    "link": "https://nickyclem.itch.io/insurance-company",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "PandaSama",
+    "modName": "Child Birth Mod",
+    "status": "aggiornata",
+    "link": "https://www.patreon.com/posts/110919807",
+    "translation": "da-scaricare",
+    "dependency": "DLC Al Lavoro"
+  },
+  {
+    "author": "PandaSama",
+    "modName": "Kids Trampoline",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/kids-trampoline-45283318",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "PandaSama",
+    "modName": "Toddler Changing Table",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/toddler-changing-54496259",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "PandaSama",
+    "modName": "Toddler Creativity Pack",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/52862857",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "PandaSama",
+    "modName": "Toddler Play Tunnel + Makeup Kit",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/toddler-play-kit-56613427?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_fan&utm_content=join_link",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "PandaSama",
+    "modName": "Toddler Stuff Mod Pack",
+    "status": "compatibile",
+    "link": "https://www.patreon.com/posts/toddler-stuff-49517597?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_fan&utm_content=join_link",
+    "translation": "da-scaricare",
+    "dependency": ""
+  },
+  {
+    "author": "Plumlace",
+    "modName": "Mental Wellness",
+    "status": "aggiornata",
+    "link": "https://www.patreon.com/posts/mental-wellness-114872142",
+    "translation": "da-scaricare",
+    "dependency": "XML Injector"
   }
 ]
