@@ -1,0 +1,19 @@
+[
+  {
+    "author": "Mario Rossi",
+    "modName": "Mod1",
+    "status": "aggiornata",
+    "link": "https://example.com",
+    "translation": "inclusa",
+    "dependency": "Altro Mod"
+  },
+  {
+    "author": "Luigi Verdi",
+    "modName": "Mod2",
+    "status": "compatibile",
+    "link": "https://example.com",
+    "translation": "non-necessaria",
+    "dependency": "None"
+  }
+  // Aggiungi altre mod qui...
+]
