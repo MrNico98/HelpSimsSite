@@ -1,1 +1,50 @@
-[{"author": "Adeepindigo", "modName": "Babysitting Gigs", "status": "", "link": "https://adeepindigomods.itch.io/babysitting-gigs", "translation": "compatibile", "dependency": "General Pie Menus - DLC Vita sull'Isola - DLC Raccomandato (Genitorialit\u00e0)"}, {"author": "Adeepindigo", "modName": "Better Daycare", "status": "aggiornata", "link": "https://adeepindigomods.itch.io/better-daycare", "translation": "da-scaricare", "dependency": "Core Library"}, {"author": "Adeepindigo", "modName": "Custom Nuptials", "status": "", "link": "https://adeepindigomods.itch.io/custom-nuptials", "translation": "da-scaricare", "dependency": "General Pie Menus - ATTENZIONE leggere attentamente la descrizione dei CONFLITTI con altre mod"}, {"author": "Adeepindigo", "modName": "Date Night Activities", "status": "", "link": "https://www.patreon.com/posts/rabbithole-mods-84780425", "translation": "da-scaricare", "dependency": "General Pie Menus - Core Library"}, {"author": "Adeepindigo", "modName": "Delinquent Teens", "status": "", "link": "https://adeepindigomods.itch.io/delinquent-teens", "translation": "da-scaricare", "dependency": "General Pie Menus - Shared Tuning - Mood Pack - DLC Alcuni Raccomandati"}, {"modName": "PSO Shared Library", "author": "Andirz", "status": "compatibile", "link": "https://www.curseforge.com/sims4/mods/pso-shared-library", "translation": "da-scaricare", "dependency": ""}]
+[
+  {
+    "author": "Adeepindigo",
+    "modName": "Babysitting Gigs",
+    "status": "",
+    "link": "https://adeepindigomods.itch.io/babysitting-gigs",
+    "translation": "compatibile",
+    "dependency": "General Pie Menus - DLC Vita sull'Isola - DLC Raccomandato (Genitorialità)"
+  },
+  {
+    "author": "Adeepindigo",
+    "modName": "Better Daycare",
+    "status": "aggiornata",
+    "link": "https://adeepindigomods.itch.io/better-daycare",
+    "translation": "da-scaricare",
+    "dependency": "Core Library"
+  },
+  {
+    "author": "Adeepindigo",
+    "modName": "Custom Nuptials",
+    "status": "",
+    "link": "https://adeepindigomods.itch.io/custom-nuptials",
+    "translation": "da-scaricare",
+    "dependency": "General Pie Menus - ATTENZIONE leggere attentamente la descrizione dei CONFLITTI con altre mod"
+  },
+  {
+    "author": "Adeepindigo",
+    "modName": "Date Night Activities",
+    "status": "",
+    "link": "https://www.patreon.com/posts/rabbithole-mods-84780425",
+    "translation": "da-scaricare",
+    "dependency": "General Pie Menus - Core Library"
+  },
+  {
+    "author": "Adeepindigo",
+    "modName": "Delinquent Teens",
+    "status": "",
+    "link": "https://adeepindigomods.itch.io/delinquent-teens",
+    "translation": "da-scaricare",
+    "dependency": "General Pie Menus - Shared Tuning - Mood Pack - DLC Alcuni Raccomandati"
+  },
+  {
+    "modName": "PSO Shared Library",
+    "author": "Andirz",
+    "status": "compatibile",
+    "link": "https://www.curseforge.com/sims4/mods/pso-shared-library",
+    "translation": "da-scaricare",
+    "dependency": ""
+  }
+]
