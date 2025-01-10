@@ -26,6 +26,22 @@
       margin: 10px 5px;
       padding: 5px;
     }
+    .status {
+      color: white;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .status.compatibile {
+      background-color: blue;
+    }
+    .status.rotta {
+      background-color: red;
+    }
+    .status.aggiornata {
+      background-color: green;
+    }
   </style>
 </head>
 <body>
@@ -37,8 +53,9 @@
     <label for="filter-status">Filtra per stato:</label>
     <select id="filter-status" onchange="filterTable()">
       <option value="">Tutti</option>
-      <option value="Attivo">Attivo</option>
-      <option value="Inattivo">Inattivo</option>
+      <option value="Compatibile">Compatibile</option>
+      <option value="Rotta">Rotta</option>
+      <option value="Aggiornata">Aggiornata</option>
     </select>
   </div>
 
@@ -58,7 +75,7 @@
       <tr>
         <td>Mario Rossi</td>
         <td>Mod1</td>
-        <td>Attivo</td>
+        <td><span class="status aggiornata">AGGIORNATA</span></td>
         <td><a href="https://example.com">Link</a></td>
         <td>Italiano</td>
         <td>Altro Mod</td>
@@ -66,10 +83,18 @@
       <tr>
         <td>Luigi Verdi</td>
         <td>Mod2</td>
-        <td>Inattivo</td>
+        <td><span class="status compatibile">COMPATIBILE</span></td>
         <td><a href="https://example.com">Link</a></td>
         <td>Inglese</td>
         <td>None</td>
+      </tr>
+      <tr>
+        <td>Anna Bianchi</td>
+        <td>Mod3</td>
+        <td><span class="status rotta">ROTTA</span></td>
+        <td><a href="https://example.com">Link</a></td>
+        <td>Spagnolo</td>
+        <td>Altro Mod</td>
       </tr>
     </tbody>
   </table>
@@ -85,7 +110,8 @@
         const cells = row.getElementsByTagName("td");
         const matchesSearch = cells[0].textContent.toLowerCase().includes(searchInput) ||
                               cells[1].textContent.toLowerCase().includes(searchInput);
-        const matchesStatus = !filterStatus || cells[2].textContent.toLowerCase() === filterStatus;
+        const statusText = cells[2].textContent.toLowerCase();
+        const matchesStatus = !filterStatus || statusText.includes(filterStatus);
 
         row.style.display = matchesSearch && matchesStatus ? "" : "none";
       }
