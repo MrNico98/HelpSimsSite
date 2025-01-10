@@ -42,6 +42,28 @@
     .status.aggiornata {
       background-color: green;
     }
+    .traduzione {
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .traduzione.inclusa {
+      background-color: yellow;
+      color: black;
+    }
+    .traduzione.non-necessaria {
+      background-color: green;
+      color: white;
+    }
+    .traduzione.in-lavorazione {
+      background-color: lightblue;
+      color: black;
+    }
+    .traduzione.da-scaricare {
+      background-color: orange;
+      color: black;
+    }
   </style>
 </head>
 <body>
@@ -57,6 +79,15 @@
       <option value="Rotta">Rotta</option>
       <option value="Aggiornata">Aggiornata</option>
     </select>
+
+    <label for="filter-translation">Filtra per traduzione:</label>
+    <select id="filter-translation" onchange="filterTable()">
+      <option value="">Tutti</option>
+      <option value="Inclusa">Inclusa</option>
+      <option value="Non necessaria">Non necessaria</option>
+      <option value="In lavorazione">In lavorazione</option>
+      <option value="Da scaricare">Da scaricare</option>
+    </select>
   </div>
 
   <table id="mods-table">
@@ -71,13 +102,12 @@
       </tr>
     </thead>
     <tbody>
-      <!-- Inserisci qui i dati -->
       <tr>
         <td>Mario Rossi</td>
         <td>Mod1</td>
         <td><span class="status aggiornata">AGGIORNATA</span></td>
         <td><a href="https://example.com">Link</a></td>
-        <td>Italiano</td>
+        <td><span class="traduzione inclusa">INCLUSA</span></td>
         <td>Altro Mod</td>
       </tr>
       <tr>
@@ -85,7 +115,7 @@
         <td>Mod2</td>
         <td><span class="status compatibile">COMPATIBILE</span></td>
         <td><a href="https://example.com">Link</a></td>
-        <td>Inglese</td>
+        <td><span class="traduzione non-necessaria">NON NECESSARIA</span></td>
         <td>None</td>
       </tr>
       <tr>
@@ -93,7 +123,15 @@
         <td>Mod3</td>
         <td><span class="status rotta">ROTTA</span></td>
         <td><a href="https://example.com">Link</a></td>
-        <td>Spagnolo</td>
+        <td><span class="traduzione in-lavorazione">IN LAVORAZIONE</span></td>
+        <td>Altro Mod</td>
+      </tr>
+      <tr>
+        <td>Giovanni Blu</td>
+        <td>Mod4</td>
+        <td><span class="status compatibile">COMPATIBILE</span></td>
+        <td><a href="https://example.com">Link</a></td>
+        <td><span class="traduzione da-scaricare">DA SCARICARE</span></td>
         <td>Altro Mod</td>
       </tr>
     </tbody>
@@ -103,6 +141,7 @@
     function filterTable() {
       const searchInput = document.getElementById("search").value.toLowerCase();
       const filterStatus = document.getElementById("filter-status").value.toLowerCase();
+      const filterTranslation = document.getElementById("filter-translation").value.toLowerCase();
       const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
       const rows = table.getElementsByTagName("tr");
 
@@ -111,9 +150,11 @@
         const matchesSearch = cells[0].textContent.toLowerCase().includes(searchInput) ||
                               cells[1].textContent.toLowerCase().includes(searchInput);
         const statusText = cells[2].textContent.toLowerCase();
+        const translationText = cells[4].textContent.toLowerCase();
         const matchesStatus = !filterStatus || statusText.includes(filterStatus);
+        const matchesTranslation = !filterTranslation || translationText.includes(filterTranslation);
 
-        row.style.display = matchesSearch && matchesStatus ? "" : "none";
+        row.style.display = matchesSearch && matchesStatus && matchesTranslation ? "" : "none";
       }
     }
   </script>
