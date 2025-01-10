@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestione Mod</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    input, select {
+      margin: 10px 5px;
+      padding: 5px;
+    }
+    .status {
+      color: white;
+      font-weight: bold;
+      padding: 5px;
+      border-radius: 5px;
+      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+      width: 100%;
+       height: 100%;
+    }
+    .status.compatibile {
+      background-color: blue;
+    }
+    .status.rotta {
+      background-color: red;
+    }
+    .status.aggiornata {
+      background-color: green;
+    }
+    .traduzione {
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .traduzione.inclusa {
+      background-color: yellow;
+      color: black;
+    }
+    .traduzione.non-necessaria {
+      background-color: green;
+      color: white;
+    }
+    .traduzione.in-lavorazione {
+      background-color: lightblue;
+      color: black;
+    }
+    .traduzione.da-scaricare {
+      background-color: orange;
+      color: black;
+    }
+    .form-container {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      display: none;
+    }
+    .form-container h2 {
+      margin-top: 0;
+    }
+    button {
+      padding: 5px 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #login-container {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    #login-container input {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gestione Mod</h1>
+
+  <div>
+    <label for="search">Cerca:</label>
+    <input type="text" id="search" oninput="filterTable()" placeholder="Cerca...">
+
+    <label for="filter-status">Filtra per stato:</label>
+    <select id="filter-status" onchange="filterTable()">
+      <option value="">Tutti</option>
+      <option value="Compatibile">Compatibile</option>
+      <option value="Rotta">Rotta</option>
+      <option value="Aggiornata">Aggiornata</option>
+    </select>
+
+    <label for="filter-translation">Filtra per traduzione:</label>
+    <select id="filter-translation" onchange="filterTable()">
+      <option value="">Tutti</option>
+      <option value="Inclusa">Inclusa</option>
+      <option value="Non necessaria">Non necessaria</option>
+      <option value="In lavorazione">In lavorazione</option>
+      <option value="Da scaricare">Da scaricare</option>
+    </select>
+  </div>
+
+  <table id="mods-table">
+    <thead>
+      <tr>
+        <th>AUTORE</th>
+        <th>MOD</th>
+        <th>STATO</th>
+        <th>LINK MOD</th>
+        <th>TRADUZIONE</th>
+        <th>PER IL FUNZIONAMENTO SERVE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Mario Rossi</td>
+        <td>Mod1</td>
+        <td><span class="status aggiornata">AGGIORNATA</span></td>
+        <td><a href="https://example.com">Link</a></td>
+        <td><span class="traduzione inclusa">INCLUSA</span></td>
+        <td>Altro Mod</td>
+      </tr>
+      <tr>
+        <td>Luigi Verdi</td>
+        <td>Mod2</td>
+        <td><span class="status compatibile">COMPATIBILE</span></td>
+        <td><a href="https://example.com">Link</a></td>
+        <td><span class="traduzione non-necessaria">NON NECESSARIA</span></td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Anna Bianchi</td>
+        <td>Mod3</td>
+        <td><span class="status rotta">ROTTA</span></td>
+        <td><a href="https://example.com">Link</a></td>
+        <td><span class="traduzione in-lavorazione">IN LAVORAZIONE</span></td>
+        <td>Altro Mod</td>
+      </tr>
+      <tr>
+        <td>Giovanni Blu</td>
+        <td>Mod4</td>
+        <td><span class="status compatibile">COMPATIBILE</span></td>
+        <td><a href="https://example.com">Link</a></td>
+        <td><span class="traduzione da-scaricare">DA SCARICARE</span></td>
+        <td>Altro Mod</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id="login-container">
+    <h2>Accesso per Inserimento Mod</h2>
+    <label for="username">Username:</label>
+    <input type="text" id="username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" required>
+
+    <button onclick="login()">Accedi</button>
+    <p id="login-message" style="color: red; display: none;">Accesso negato. Controlla le credenziali.</p>
+  </div>
+
+  <div class="form-container" id="add-mod-container">
+    <h2>Aggiungi Nuova Mod</h2>
+    <form id="add-mod-form">
+      <label for="author">Autore:</label>
+      <input type="text" id="author" required>
+
+      <label for="mod-name">Nome Mod:</label>
+      <input type="text" id="mod-name" required>
+
+      <label for="status">Stato:</label>
+      <select id="status" required>
+        <option value="aggiornata">Aggiornata</option>
+        <option value="compatibile">Compatibile</option>
+        <option value="rotta">Rotta</option>
+      </select>
+
+      <label for="link">Link Mod:</label>
+      <input type="url" id="link" required>
+
+      <label for="translation">Traduzione:</label>
+      <select id="translation" required>
+        <option value="inclusa">Inclusa</option>
+        <option value="non-necessaria">Non necessaria</option>
+        <option value="in-lavorazione">In lavorazione</option>
+        <option value="da-scaricare">Da scaricare</option>
+      </select>
+
+      <label for="dependency">Dipendenza:</label>
+      <input type="text" id="dependency">
+
+      <button type="button" onclick="addMod()">Aggiungi</button>
+    </form>
+  </div>
+
+  <script>
+    const authorizedUsers = [
+      { username: "admin", passwordHash: "202cb962ac59075b964b07152d234b70" }, // md5 hash of "123"
+      { username: "user1", passwordHash: "81dc9bdb52d04dc20036dbd8313ed055" } // md5 hash of "1234"
+    ];
+
+    function hashPassword(password) {
+      return CryptoJS.MD5(password).toString();
+    }
+
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const passwordHash = hashPassword(password);
+
+      const user = authorizedUsers.find(
+        user => user.username === username && user.passwordHash === passwordHash
+      );
+
+      if (user) {
+        document.getElementById("login-container").style.display = "none";
+        document.getElementById("add-mod-container").style.display = "block";
+      } else {
+        document.getElementById("login-message").style.display = "block";
+      }
+    }
+
+    function filterTable() {
+      const searchInput = document.getElementById("search").value.toLowerCase();
+      const filterStatus = document.getElementById("filter-status").value.toLowerCase();
+      const filterTranslation = document.getElementById("filter-translation").value.toLowerCase();
+      const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
+      const rows = table.getElementsByTagName("tr");
+
+      for (let row of rows) {
+        const cells = row.getElementsByTagName("td");
+        const matchesSearch = cells[0].textContent.toLowerCase().includes(searchInput) ||
+                              cells[1].textContent.toLowerCase().includes(searchInput);
+        const statusText = cells[2].textContent.toLowerCase();
+        const translationText = cells[4].textContent.toLowerCase();
+        const matchesStatus = !filterStatus || statusText.includes(filterStatus);
+        const matchesTranslation = !filterTranslation || translationText.includes(filterTranslation);
+
+        row.style.display = matchesSearch && matchesStatus && matchesTranslation ? "" : "none";
+      }
+    }
+
+    function addMod() {
+      const author = document.getElementById("author").value;
+      const modName = document.getElementById("mod-name").value;
+      const status = document.getElementById("status").value;
+      const link = document.getElementById("link").value;
+      const translation = document.getElementById("translation").value;
+      const dependency = document.getElementById("dependency").value || "None";
+
+      const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
+      const newRow = table.insertRow();
+
+
+      newRow.innerHTML = `
+        <td>${author}</td>
+        <td>${modName}</td>
+        <td><span class="status ${status}">${status.toUpperCase()}</span></td>
+        <td><a href="${link}" target="_blank">Link</a></td>
+        <td><span class="traduzione ${translation}">${translation.replace("-", " ").toUpperCase()}</span></td>
+        <td>${dependency}</td>
+      `;
+
+      document.getElementById("add-mod-form").reset();
+    }
+  </script>
+</body>
+</html>
