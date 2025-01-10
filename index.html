@@ -8,16 +8,22 @@
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
+      padding: 0;
     }
+
     h1 {
       text-align: center;
+      font-size: 24px;
     }
+
     .button-container {
       display: flex;
+      flex-wrap: wrap; /* Permette ai bottoni di andare su una nuova riga se non c'è spazio */
       justify-content: center;
       gap: 20px;
       margin-top: 50px;
     }
+
     .button-container a {
       text-decoration: none;
       background-color: #4CAF50;
@@ -27,21 +33,37 @@
       text-align: center;
       font-weight: bold;
       transition: background-color 0.3s ease;
+      display: inline-block;
+      width: 200px; /* Aggiungi una larghezza fissa per i bottoni */
     }
+
     .button-container a:hover {
       background-color: #45a049;
     }
+
+    /* Media Query per schermi piccoli */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 20px;
+      }
+
+      .button-container a {
+        width: 100%; /* Fa in modo che i bottoni occupino tutta la larghezza disponibile su schermi piccoli */
+        padding: 12px;
+      }
+    }
+
   </style>
 </head>
 <body>
   <h1>Benvenuto alla Gestione Mod</h1>
 
-<div class="button-container">
-  <a href="mod.html">MOD</a>
-  <a href="#">MOD +18</a>
-  <a href="#">ANIMAZIONI WICKED WHIMS +18</a>
-  <a href="#">TRADUZIONI</a>
-  <a href="#">PROGRAMMI</a>
-</div>
+  <div class="button-container">
+    <a href="mod.html">MOD</a>
+    <a href="#">MOD +18</a>
+    <a href="#">ANIMAZIONI WICKED WHIMS +18</a>
+    <a href="#">TRADUZIONI</a>
+    <a href="#">PROGRAMMI</a>
+  </div>
 </body>
 </html>
