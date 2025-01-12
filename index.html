@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HelpSims Pianeta Sim</title>
+  <title>Benvenuto sul sito di Pianeta Sim</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom, #ffdee9, #b5c7ed); /* Sfumatura rosa e blu */
+      background: linear-gradient(to bottom, #ffdee9, #b5c7ed);
       color: #333;
     }
 
@@ -36,11 +36,12 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-      margin: 50px auto;
+      margin: 30px auto;
       max-width: 800px;
     }
 
-    .button-container a {
+    .button-container a,
+    .button-container button {
       text-decoration: none;
       background-color: #4CAF50;
       color: white;
@@ -51,11 +52,37 @@
       transition: background-color 0.3s ease, transform 0.2s;
       display: inline-block;
       width: 200px;
+      border: none;
+      cursor: pointer;
     }
 
-    .button-container a:hover {
+    .button-container a:hover,
+    .button-container button:hover {
       background-color: #45a049;
       transform: scale(1.05);
+    }
+
+    .mod-table {
+      display: none; /* Nascondi la tabella inizialmente */
+      margin: 30px auto;
+      border-collapse: collapse;
+      width: 80%;
+      max-width: 800px;
+    }
+
+    .mod-table th, .mod-table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .mod-table th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .mod-table tr:nth-child(even) {
+      background-color: #f9f9f9;
     }
 
     footer {
@@ -65,24 +92,22 @@
       color: white;
       margin-top: 50px;
     }
-
-    /* Media Query per schermi piccoli */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 22px;
-      }
-
-      .button-container a {
-        width: 100%;
-        padding: 12px;
+  </style>
+  <script>
+    function toggleTable() {
+      const table = document.getElementById("modTable");
+      if (table.style.display === "none" || table.style.display === "") {
+        table.style.display = "table";
+      } else {
+        table.style.display = "none";
       }
     }
-  </style>
+  </script>
 </head>
 <body>
   <header>
     <img src="HelpSimspianeta.png" alt="Help Sims Pianeta Sim">
-    <h1>Benvenuto su HelpSims Pianeta Sim</h1>
+    <h1>Benvenuto sul sito di Pianeta Sim</h1>
   </header>
 
   <div class="button-container">
@@ -91,11 +116,38 @@
     <a href="#">ANIMAZIONI WICKED WHIMS +18</a>
     <a href="#">TRADUZIONI</a>
     <a href="#">PROGRAMMI</a>
+    <button onclick="toggleTable()">Lista MOD</button>
   </div>
+
+  <table class="mod-table" id="modTable">
+    <thead>
+      <tr>
+        <th>Nome Mod</th>
+        <th>Descrizione</th>
+        <th>Autore</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Mod 1</td>
+        <td>Descrizione della Mod 1</td>
+        <td>Autore 1</td>
+      </tr>
+      <tr>
+        <td>Mod 2</td>
+        <td>Descrizione della Mod 2</td>
+        <td>Autore 2</td>
+      </tr>
+      <tr>
+        <td>Mod 3</td>
+        <td>Descrizione della Mod 3</td>
+        <td>Autore 3</td>
+      </tr>
+    </tbody>
+  </table>
 
   <footer>
     © 2025 HelpSims Pianeta Sim. Tutti i diritti riservati.
   </footer>
 </body>
 </html>
-
