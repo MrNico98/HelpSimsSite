@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Benvenuto sul sito di Pianeta Sim</title>
+  <title>HelpSims Pianeta Sim</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,6 +11,9 @@
       padding: 0;
       background: linear-gradient(to bottom, #ffdee9, #b5c7ed);
       color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Assicura che il contenuto riempia almeno l'altezza della finestra */
     }
 
     header {
@@ -62,47 +65,14 @@
       transform: scale(1.05);
     }
 
-    .mod-table {
-      display: none; /* Nascondi la tabella inizialmente */
-      margin: 30px auto;
-      border-collapse: collapse;
-      width: 80%;
-      max-width: 800px;
-    }
-
-    .mod-table th, .mod-table td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-    }
-
-    .mod-table th {
-      background-color: #4CAF50;
-      color: white;
-    }
-
-    .mod-table tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-
     footer {
+      margin-top: auto; /* Spinge il footer in basso */
       text-align: center;
       padding: 10px 0;
       background-color: #333;
       color: white;
-      margin-top: 50px;
     }
   </style>
-  <script>
-    function toggleTable() {
-      const table = document.getElementById("modTable");
-      if (table.style.display === "none" || table.style.display === "") {
-        table.style.display = "table";
-      } else {
-        table.style.display = "none";
-      }
-    }
-  </script>
 </head>
 <body>
   <header>
@@ -119,35 +89,8 @@
     <button onclick="toggleTable()">Lista MOD</button>
   </div>
 
-  <table class="mod-table" id="modTable">
-    <thead>
-      <tr>
-        <th>Nome Mod</th>
-        <th>Descrizione</th>
-        <th>Autore</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Mod 1</td>
-        <td>Descrizione della Mod 1</td>
-        <td>Autore 1</td>
-      </tr>
-      <tr>
-        <td>Mod 2</td>
-        <td>Descrizione della Mod 2</td>
-        <td>Autore 2</td>
-      </tr>
-      <tr>
-        <td>Mod 3</td>
-        <td>Descrizione della Mod 3</td>
-        <td>Autore 3</td>
-      </tr>
-    </tbody>
-  </table>
-
   <footer>
-    © 2025 Pianeta Sim. Tutti i diritti riservati.
+    © 2025 Pianeta Sim. Tutti i diritti riservati. | @Pianeta Sim
   </footer>
 </body>
 </html>
