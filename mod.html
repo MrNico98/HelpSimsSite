@@ -12,7 +12,6 @@
       padding: 0;
     }
 
-
     .navbar {
       display: flex;
       flex-wrap: wrap;
@@ -160,15 +159,15 @@
       font-size: 20px;
       cursor: pointer;
       color: grey;
-      display: inline-block;
+      display: none; /* Nascondi per le non preferite */
     }
 
     .star.favorite {
-      color: gold;
+      color: gold; /* Stella gialla fissa per le preferite */
     }
 
     .mod-name:hover .star {
-      display: inline;
+      display: inline; /* Mostra la stella al passaggio del mouse per le non preferite */
     }
 
     .star-container {
@@ -342,3 +341,4 @@
   </script>
 </body>
 </html>
+
