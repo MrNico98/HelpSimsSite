@@ -40,15 +40,6 @@
       transform: scale(1.1);
     }
 
-    .navbar button {
-      font-size: 16px;
-    }
-
-    .navbar a {
-      display: inline-block;
-      text-align: center;
-    }
-
     .button-container {
       display: flex;
       flex-wrap: wrap;
@@ -144,23 +135,6 @@
       background-color: #f9f9f9;
     }
 
-    .form-container h2 {
-      margin-top: 0;
-    }
-
-    button {
-      padding: 5px 10px;
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      border-radius: 3px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-
     /* Media Query per i dispositivi mobili */
     @media (max-width: 600px) {
       h1 {
@@ -215,7 +189,8 @@
         <th>AUTORE</th>
         <th>MOD</th>
         <th>STATO</th>
-        <th>LINK MOD</th>
+        <th>LINK SITO MOD</th>
+        <th>LINK DIRETTO</th>
         <th>TRADUZIONE</th>
         <th>PER IL FUNZIONAMENTO SERVE</th>
       </tr>
@@ -247,11 +222,9 @@
     }
 
     function loadModsFromJson() {
-      // Modifica l'URL con quello del tuo file JSON su GitHub
       fetch('https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/mods.json')
         .then(response => response.json())
         .then(mods => {
-          // Quando il JSON è caricato, popola la tabella
           const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
           mods.forEach(mod => {
             const newRow = table.insertRow();
@@ -259,7 +232,8 @@
               <td>${mod.author}</td>
               <td>${mod.modName}</td>
               <td><span class="status ${mod.status}">${mod.status.toUpperCase()}</span></td>
-              <td><a href="${mod.link}" target="_blank">Link</a></td>
+              <td><a href="${mod.siteLink}" target="_blank">Visita</a></td>
+              <td><a href="${mod.directLink}" target="_blank">Scarica</a></td>
               <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
               <td>${mod.dependency || 'None'}</td>
             `;
@@ -268,8 +242,8 @@
         .catch(error => console.error('Errore nel caricare il JSON:', error));
     }
 
-    // Carica le mod all'inizio quando la pagina si carica
     window.onload = loadModsFromJson;
   </script>
 </body>
 </html>
+
