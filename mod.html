@@ -235,10 +235,10 @@ function filterTable() {
     const matchesTranslation = !filterTranslation || translationText.includes(filterTranslation);
     
     // Recupera le categorie dalla proprietà "categoria" del JSON
-    const categories = row.getAttribute("data-categories").toLowerCase().split(",").map(cat => cat.trim());
+    const categories = row.getAttribute("data-categories") ? row.getAttribute("data-categories").toLowerCase().split(",").map(cat => cat.trim()) : [];
 
     // Verifica se la categoria selezionata è una delle categorie
-    const matchesCategory = !filterCategory || categories.includes(filterCategory);
+    const matchesCategory = !filterCategory || filterCategory === "tutte" || categories.includes(filterCategory);
 
     row.style.display = matchesSearch && matchesStatus && matchesTranslation && matchesCategory ? "" : "none";
   }
