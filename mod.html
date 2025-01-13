@@ -155,24 +155,24 @@
     }
 
     /* Stile per la stella */
-    .star {
-      font-size: 20px;
-      cursor: pointer;
-      color: grey;
-      display: none; /* Nascondi per le non preferite */
-    }
+.star {
+  font-size: 20px;
+  cursor: pointer;
+  color: grey;
+  display: inline; /* Rendi sempre visibile la stella grigia per tutte le righe */
+}
 
-    .star.favorite {
-      color: gold; /* Stella gialla fissa per le preferite */
-    }
+.star.favorite {
+  color: gold; /* Stella gialla fissa per le preferite */
+}
 
-    .mod-name:hover .star {
-      display: inline; /* Mostra la stella al passaggio del mouse per le non preferite */
-    }
+.mod-name:hover .star {
+  display: inline; /* Mostra la stella al passaggio del mouse per le non preferite */
+}
 
-    .star-container {
-      display: inline-block;
-    }
+.star-container {
+  display: inline-block;
+}
   </style>
 </head>
 <body>
