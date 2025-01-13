@@ -159,15 +159,16 @@
   font-size: 20px;
   cursor: pointer;
   color: grey;
-  display: inline; /* Rendi sempre visibile la stella grigia per tutte le righe */
+  display: none; /* Nasconde la stella grigia di default */
 }
 
 .star.favorite {
   color: gold; /* Stella gialla fissa per le preferite */
+  display: inline; /* La stella gialla è sempre visibile */
 }
 
 .mod-name:hover .star {
-  display: inline; /* Mostra la stella al passaggio del mouse per le non preferite */
+  display: inline; /* Mostra la stella grigia al passaggio del mouse per le non preferite */
 }
 
 .star-container {
