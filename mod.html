@@ -156,13 +156,15 @@
 
     /* Stile per la stella */
 .star-container {
-  display: inline-block;
-  text-align: center; /* Centrato orizzontalmente */
-  width: 30px; /* Imposta la larghezza della colonna */
+  display: flex;
+  justify-content: center; /* Centrato orizzontalmente */
+  align-items: center; /* Centrato verticalmente */
+  width: 50px; /* Aumenta la larghezza per dare più spazio alla stella */
+  height: 50px; /* Imposta l'altezza della colonna per centrarla meglio */
 }
 
 .star {
-  font-size: 14px; /* Riduci la dimensione della stella */
+  font-size: 30px; /* Aumenta la dimensione della stella */
   cursor: pointer;
   color: grey;
   display: inline-block; /* Mostra la stella grigia */
