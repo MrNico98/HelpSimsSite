@@ -159,8 +159,8 @@
   font-size: 20px;
   cursor: pointer;
   color: grey;
-  display: none; /* Nasconde la stella grigia di default */
 }
+
 
 .star.favorite {
   color: gold; /* Stella gialla fissa per le preferite */
@@ -169,12 +169,16 @@
 
 .mod-name {
   display: flex;
-  align-items: center;
+  align-items: center;  /* Allinea la stella e il nome */
+  justify-content: flex-start; /* Allinea a sinistra */
+  width: 100%; /* Assicurati che prenda tutta la larghezza disponibile */
 }
 
+
 .star-container {
-  margin-right: 5px; /* Aggiungi uno spazio tra la stella e il nome */
+  margin-right: 5px; /* Spazio tra la stella e il nome */
 }
+
   </style>
 </head>
 <body>
