@@ -11,33 +11,42 @@
       margin: 20px;
     }
     nav {
-      background-color: #f4f4f4;
+      background: linear-gradient(90deg, #007BFF, #0056b3);
       padding: 10px;
-      border-radius: 5px;
+      border-radius: 8px;
       margin-bottom: 20px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     nav a {
-      margin-right: 10px;
+      margin: 0 10px;
       text-decoration: none;
-      color: #007BFF;
+      color: white;
       font-weight: bold;
+      transition: color 0.3s ease;
     }
     nav a:hover {
-      text-decoration: underline;
+      color: #FFD700;
     }
     nav button {
-      margin-left: auto;
-      padding: 5px 10px;
-      background-color: #007BFF;
-      color: white;
+      padding: 8px 15px;
+      background-color: #FFD700;
+      color: #0056b3;
       border: none;
-      border-radius: 3px;
+      border-radius: 5px;
+      font-weight: bold;
       cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
     nav button:hover {
-      background-color: #0056b3;
+      background-color: #FFC107;
+      transform: scale(1.1);
+    }
+    nav .menu {
+      display: flex;
+      gap: 15px;
     }
     table {
       width: 100%;
@@ -123,11 +132,13 @@
 </head>
 <body>
   <nav>
-    <a href="mod.html">MOD</a>
-    <a href="#">MOD +18</a>
-    <a href="#">ANIMAZIONI WICKED WHIMS +18</a>
-    <a href="#">TRADUZIONI</a>
-    <a href="#">PROGRAMMI</a>
+    <div class="menu">
+      <a href="mod.html">MOD</a>
+      <a href="#">MOD +18</a>
+      <a href="#">ANIMAZIONI WICKED WHIMS +18</a>
+      <a href="#">TRADUZIONI</a>
+      <a href="#">PROGRAMMI</a>
+    </div>
     <button onclick="toggleTable()">Lista MOD</button>
   </nav>
 
