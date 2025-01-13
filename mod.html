@@ -135,6 +135,12 @@
       background-color: #f9f9f9;
     }
 
+    .favorite {
+      color: gold;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
     /* Media Query per i dispositivi mobili */
     @media (max-width: 600px) {
       h1 {
@@ -193,7 +199,7 @@
         <th>LINK DIRETTO</th>
         <th>TRADUZIONE</th>
         <th>PER IL FUNZIONAMENTO SERVE</th>
-        <th>AZIONI</th> <!-- Nuova colonna per azioni -->
+        <th>AZIONI</th>
       </tr>
     </thead>
     <tbody>
@@ -228,12 +234,21 @@
         .then(mods => {
           const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
           const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
+          table.innerHTML = ''; // Reset della tabella per evitare duplicati
+
+          // Ordina le mods per mettere prima quelle preferite
+          mods.sort((a, b) => {
+            const isFavoriteA = favorites.includes(a.modName);
+            const isFavoriteB = favorites.includes(b.modName);
+            return isFavoriteB - isFavoriteA; // Le preferite vengono prima
+          });
+
           mods.forEach(mod => {
             const isFavorite = favorites.includes(mod.modName);
             const newRow = table.insertRow();
             newRow.innerHTML = `
               <td>${mod.author}</td>
-              <td>${mod.modName}</td>
+              <td>${mod.modName} ${isFavorite ? '<span class="favorite">★</span>' : ''}</td>
               <td><span class="status ${mod.status}">${mod.status.toUpperCase()}</span></td>
               <td><a href="${mod.siteLink}" target="_blank">Visita</a></td>
               <td><a href="${mod.directLink}" target="_blank">Scarica</a></td>
@@ -260,7 +275,7 @@
         alert(modName + " è stato aggiunto ai preferiti!");
       }
       localStorage.setItem("favorites", JSON.stringify(favorites));
-      loadModsFromJson(); // Ricarica la tabella per aggiornare i pulsanti
+      loadModsFromJson(); // Ricarica la tabella per aggiornare i pulsanti e l'ordine
     }
 
     window.onload = loadModsFromJson;
