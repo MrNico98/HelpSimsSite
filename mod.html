@@ -225,17 +225,19 @@ function filterTable() {
 
   for (let row of rows) {
     const cells = row.getElementsByTagName("td");
-    const matchesSearch = cells[0].textContent.toLowerCase().includes(searchInput) ||
-                          cells[1].textContent.toLowerCase().includes(searchInput);
+    const modName = cells[1].textContent.toLowerCase();
+    const author = cells[0].textContent.toLowerCase();
     const statusText = cells[2].textContent.toLowerCase();
     const translationText = cells[4].textContent.toLowerCase();
-    const categoryText = cells[5].textContent.toLowerCase();
-    
+
+    const matchesSearch = modName.includes(searchInput) || author.includes(searchInput);
     const matchesStatus = !filterStatus || statusText.includes(filterStatus);
     const matchesTranslation = !filterTranslation || translationText.includes(filterTranslation);
     
-    // Modifica il filtro per la categoria
-    const categories = cells[5].textContent.toLowerCase().split(",").map(cat => cat.trim());
+    // Recupera le categorie dalla proprietà "categoria" del JSON
+    const categories = row.getAttribute("data-categories").toLowerCase().split(",").map(cat => cat.trim());
+
+    // Verifica se la categoria selezionata è una delle categorie
     const matchesCategory = !filterCategory || categories.includes(filterCategory);
 
     row.style.display = matchesSearch && matchesStatus && matchesTranslation && matchesCategory ? "" : "none";
@@ -274,26 +276,27 @@ function filterTable() {
             return isFavoriteB - isFavoriteA; // Le preferite vengono prima
           });
 
-          mods.forEach(mod => {
-            const isFavorite = favorites.includes(mod.modName);
-            const today = new Date().toLocaleDateString('it-IT');
-            const newRow = table.insertRow();
-            newRow.innerHTML = `
-              <td>${mod.author}</td>
-              <td>${mod.modName} ${isFavorite ? '<span class="favorite">★</span>' : ''}</td>
-              <td><span class="status ${mod.status}">${mod.status.toUpperCase()}</span></td>
-              <td><a href="${mod.siteLink}" target="_blank">Visita</a></td>
-              <td><a href="${mod.directLink}" target="_blank">Scarica</a></td>
-              <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
-              <td>${mod.dependency || 'None'}</td>
-              <td>${mod.status.toLowerCase() === 'aggiornata' ? today : ''}</td>
-              <td>
-                <button class="favorite-button" onclick="toggleFavorite('${mod.modName}')">
-                  ${isFavorite ? "Rimuovi dai preferiti" : "Aggiungi ai preferiti"}
-                </button>
-              </td>
-            `;
-          });
+mods.forEach(mod => {
+  const isFavorite = favorites.includes(mod.modName);
+  const today = new Date().toLocaleDateString('it-IT');
+  const newRow = table.insertRow();
+  newRow.setAttribute("data-categories", mod.categoria.toLowerCase()); // Aggiungi le categorie come attributo
+  newRow.innerHTML = `
+    <td>${mod.author}</td>
+    <td>${mod.modName} ${isFavorite ? '<span class="favorite">★</span>' : ''}</td>
+    <td><span class="status ${mod.status}">${mod.status.toUpperCase()}</span></td>
+    <td><a href="${mod.siteLink}" target="_blank">Visita</a></td>
+    <td><a href="${mod.directLink}" target="_blank">Scarica</a></td>
+    <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
+    <td>${mod.dependency || 'None'}</td>
+    <td>${mod.status.toLowerCase() === 'aggiornata' ? today : ''}</td>
+    <td>
+      <button class="favorite-button" onclick="toggleFavorite('${mod.modName}')">
+        ${isFavorite ? "Rimuovi dai preferiti" : "Aggiungi ai preferiti"}
+      </button>
+    </td>
+  `;
+});
         })
         .catch(error => console.error('Errore nel caricare il JSON:', error));
     }
