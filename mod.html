@@ -7,36 +7,26 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     .navbar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-items: center;
-      background-color: #343a40;
+      background-color: #333;
       padding: 10px;
+      text-align: center;
     }
 
-    .navbar a, .navbar button {
+    .navbar a {
       color: white;
-      text-decoration: none;
-      background-color: #007bff;
       padding: 10px 20px;
-      border-radius: 5px;
-      border: none;
-      margin: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      font-size: 16px;
+      text-decoration: none;
+      font-size: 18px;
     }
 
-    .navbar a:hover, .navbar button:hover {
-      background-color: #0056b3;
-      transform: scale(1.1);
+    .navbar a:hover {
+      background-color: #575757;
     }
 
     .button-container {
@@ -156,10 +146,10 @@
 
     /* Stile per la stella */
     .star {
-      display: none;
       font-size: 20px;
       cursor: pointer;
       color: grey;
+      display: inline;
     }
 
     .star.favorite {
@@ -168,6 +158,10 @@
 
     .mod-name:hover .star {
       display: inline;
+    }
+
+    .star-container {
+      display: inline-block;
     }
   </style>
 </head>
@@ -304,7 +298,9 @@
               <td>${mod.author}</td>
               <td class="mod-name">
                 ${mod.modName}
-                <span class="star ${isFavorite ? 'favorite' : ''}" onclick="toggleFavorite('${mod.modName}')">&#9733;</span>
+                <span class="star-container">
+                  <span class="star ${isFavorite ? 'favorite' : ''}" onclick="toggleFavorite('${mod.modName}')">&#9733;</span>
+                </span>
               </td>
               <td><span class="status ${mod.status}">${mod.status.toUpperCase()}</span></td>
               <td><a href="${mod.siteLink}" target="_blank">Visita</a></td>
@@ -312,7 +308,6 @@
               <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
               <td>${mod.dependency || 'None'}</td>
               <td>${mod.status.toLowerCase() === 'aggiornata' ? today : ''}</td>
-              <td></td>
             `;
           });
         })
