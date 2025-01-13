@@ -1,284 +1,200 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LISTA MOD</title>
+  <title>Pianeta Sim</title>
+  <link rel="icon" type="image/png" href="HelpSimspianeta.png">
   <style>
+    /* Stili generali... */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Roboto', Arial, sans-serif;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    .navbar {
+      background: linear-gradient(to bottom, #4b6cb7, #182848);
+      color: #fff;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-items: center;
-      background-color: #343a40;
-      padding: 10px;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    .navbar a, .navbar button {
-      color: white;
-      text-decoration: none;
-      background-color: #007bff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      border: none;
-      margin: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      font-size: 16px;
-    }
+    /* Aggiungere stili per la tabella e la ricerca... */
 
-    .navbar a:hover, .navbar button:hover {
-      background-color: #0056b3;
-      transform: scale(1.1);
-    }
-
-    .button-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    h1 {
-      text-align: center;
-      background-color: #f8f9fa;
-      padding: 20px;
-      margin: 0;
-      font-size: 2rem;
-    }
-
-    table {
-      width: 100%;
+    .mod-table {
+      margin: 30px auto;
       border-collapse: collapse;
-      margin-top: 20px;
+      width: 90%;
+      max-width: 800px;
+      background-color: #fff;
+      color: #333;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
     }
 
-    th, td {
-      border: 1px solid #ccc;
-      padding: 10px;
+    .mod-table th, .mod-table td {
+      border: 1px solid #ddd;
+      padding: 12px;
       text-align: left;
     }
 
-    th {
-      background-color: #f4f4f4;
-    }
-
-    input, select {
-      margin: 10px 5px;
-      padding: 5px;
-    }
-
-    .status {
+    .mod-table th {
+      background: linear-gradient(135deg, #4CAF50, #2E7D32);
       color: white;
-      font-weight: bold;
-      padding: 5px;
-      border-radius: 5px;
-      text-align: center;
-      display: table-cell;
-      vertical-align: middle;
-      width: 100%;
-      height: 100%;
-    }
-
-    .status.compatibile {
-      background-color: blue;
-    }
-
-    .status.rotta {
-      background-color: red;
-    }
-
-    .status.aggiornata {
-      background-color: green;
-    }
-
-    .traduzione {
-      font-weight: bold;
-      padding: 5px 10px;
-      border-radius: 5px;
       text-align: center;
     }
 
-    .traduzione.inclusa {
-      background-color: yellow;
-      color: black;
-    }
-
-    .traduzione.non-necessaria {
-      background-color: green;
-      color: white;
-    }
-
-    .traduzione.in-lavorazione {
-      background-color: lightblue;
-      color: black;
-    }
-
-    .traduzione.da-scaricare {
-      background-color: orange;
-      color: black;
-    }
-
-    .form-container {
-      margin-top: 20px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+    .mod-table tr:nth-child(even) {
       background-color: #f9f9f9;
     }
 
-    .favorite {
-      color: gold;
-      font-size: 18px;
-      font-weight: bold;
+    .mod-table td.hidden {
+      display: none;
     }
-
-    /* Media Query per i dispositivi mobili */
+    
+    /* Media Query per schermi piccoli */
     @media (max-width: 600px) {
-      h1 {
-        font-size: 1.5rem;
-        padding: 10px;
-      }
-
-      .navbar a, .navbar button {
-        font-size: 14px;
-        padding: 10px;
-        width: 100%;
+      .mod-table th, .mod-table td {
+        font-size: 12px;
       }
     }
   </style>
+  <script>
+    // Aggiungere codice per gestione della tabella e la ricerca
+
+    const modData = [
+      {
+        "author": "Adeepindigo",
+        "modName": "Babysitting Gigs",
+        "status": "",
+        "siteLink": "https://adeepindigomods.itch.io/babysitting-gigs",
+        "directLink": "https://example.com/mod1-download",
+        "translation": "da-scaricare",
+        "categoria": "medico",
+        "dependency": "General Pie Menus - DLC Vita sull'Isola - DLC Raccomandato (Genitorialità)"
+      },
+      {
+        "author": "Adeepindigo",
+        "modName": "Better Daycare",
+        "status": "aggiornata",
+        "siteLink": "https://adeepindigomods.itch.io/better-daycare",
+        "directLink": "https://example.com/mod1-download",
+        "translation": "da-scaricare",
+        "dependency": "Core Library"
+      },
+      {
+        "author": "Adeepindigo",
+        "modName": "Custom Nuptials",
+        "status": "",
+        "siteLink": "https://adeepindigomods.itch.io/custom-nuptials",
+        "directLink": "https://example.com/mod1-download",
+        "translation": "da-scaricare",
+        "dependency": "General Pie Menus - ATTENZIONE leggere attentamente la descrizione dei CONFLITTI con altre mod"
+      },
+      {
+        "author": "Adeepindigo",
+        "modName": "Date Night Activities",
+        "status": "",
+        "siteLink": "https://www.patreon.com/posts/rabbithole-mods-84780425",
+        "directLink": "https://example.com/mod1-download",
+        "translation": "da-scaricare",
+        "dependency": "General Pie Menus - Core Library"
+      },
+      {
+        "author": "Adeepindigo",
+        "modName": "Delinquent Teens",
+        "status": "",
+        "siteLink": "https://adeepindigomods.itch.io/delinquent-teens",
+        "directLink": "https://example.com/mod1-download",
+        "translation": "da-scaricare",
+        "dependency": "General Pie Menus - Shared Tuning - Mood Pack - DLC Alcuni Raccomandati"
+      }
+    ];
+
+    // Funzione per aggiornare la tabella con i dati del JSON
+    function renderTable() {
+      const tableBody = document.getElementById("modTableBody");
+      tableBody.innerHTML = ''; // Svuota la tabella prima di aggiungere nuovi dati
+      modData.forEach(mod => {
+        const row = document.createElement("tr");
+
+        // Nome Mod
+        const nameCell = document.createElement("td");
+        nameCell.textContent = mod.modName;
+        row.appendChild(nameCell);
+
+        // Descrizione (vuota per ora, puoi aggiungere descrizioni nel JSON)
+        const descriptionCell = document.createElement("td");
+        descriptionCell.textContent = "Descrizione non disponibile";
+        row.appendChild(descriptionCell);
+
+        // Autore
+        const authorCell = document.createElement("td");
+        authorCell.textContent = mod.author;
+        row.appendChild(authorCell);
+
+        // Data di aggiornamento
+        const dateCell = document.createElement("td");
+        const currentDate = mod.status === "aggiornata" ? new Date().toLocaleDateString() : "Non aggiornata";
+        dateCell.textContent = currentDate;
+        row.appendChild(dateCell);
+
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Funzione di ricerca per categoria
+    function filterCategory() {
+      const searchInput = document.getElementById("categorySearch").value.toLowerCase();
+      const rows = document.querySelectorAll("#modTableBody tr");
+      rows.forEach(row => {
+        const categoryCell = row.cells[0].textContent.toLowerCase(); // Ignoriamo la colonna categoria
+        row.style.display = categoryCell.includes(searchInput) ? "" : "none";
+      });
+    }
+
+    window.onload = function() {
+      renderTable(); // Carica la tabella al caricamento della pagina
+    }
+  </script>
 </head>
 <body>
-  <h1>Tabella Mod</h1>
-  <div class="navbar">
-    <a href="mod.html">MOD</a>
+  <header>
+    <img src="HelpSimspianeta.png" alt="Help Sims Pianeta Sim">
+    <h1>Benvenuto sul sito di Pianeta Sim</h1>
+  </header>
+
+  <div class="button-container">
+    <a href="mod.html">
+      <img src="HelpSimspianeta.png" alt="MOD Icon"> MOD
+    </a>
     <a href="#">MOD +18</a>
     <a href="#">ANIMAZIONI WICKED WHIMS +18</a>
     <a href="#">TRADUZIONI</a>
     <a href="#">PROGRAMMI</a>
-    <button onclick="toggleTable()">Lista MOD</button>
+    <button onclick="toggleTable()">
+      <img src="HelpSimspianeta.png" alt="Lista Icon"> Lista MOD
+    </button>
   </div>
 
-  <div class="form-container">
-    <label for="search">Cerca:</label>
-    <input type="text" id="search" oninput="filterTable()" placeholder="Cerca...">
+  <!-- Campo di ricerca per categoria -->
+  <input type="text" id="categorySearch" placeholder="Cerca per categoria" onkeyup="filterCategory()">
 
-    <label for="filter-status">Filtra per stato:</label>
-    <select id="filter-status" onchange="filterTable()">
-      <option value="">Tutti</option>
-      <option value="Compatibile">Compatibile</option>
-      <option value="Rotta">Rotta</option>
-      <option value="Aggiornata">Aggiornata</option>
-    </select>
-
-    <label for="filter-translation">Filtra per traduzione:</label>
-    <select id="filter-translation" onchange="filterTable()">
-      <option value="">Tutti</option>
-      <option value="Inclusa">Inclusa</option>
-      <option value="Non necessaria">Non necessaria</option>
-      <option value="In lavorazione">In lavorazione</option>
-      <option value="Da scaricare">Da scaricare</option>
-    </select>
-  </div>
-
-  <table id="mods-table">
+  <table class="mod-table" id="modTable">
     <thead>
       <tr>
-        <th>AUTORE</th>
-        <th>MOD</th>
-        <th>STATO</th>
-        <th>LINK SITO MOD</th>
-        <th>LINK DIRETTO</th>
-        <th>TRADUZIONE</th>
-        <th>PER IL FUNZIONAMENTO SERVE</th>
-        <th>AZIONI</th>
+        <th>Nome Mod</th>
+        <th>Descrizione</th>
+        <th>Autore</th>
+        <th>Data di Aggiornamento</th>
       </tr>
     </thead>
-    <tbody>
-      <!-- Le righe verranno aggiunte tramite JavaScript -->
-    </tbody>
+    <tbody id="modTableBody"></tbody>
   </table>
 
-  <script>
-    function filterTable() {
-      const searchInput = document.getElementById("search").value.toLowerCase();
-      const filterStatus = document.getElementById("filter-status").value.toLowerCase();
-      const filterTranslation = document.getElementById("filter-translation").value.toLowerCase();
-      const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
-      const rows = table.getElementsByTagName("tr");
-
-      for (let row of rows) {
-        const cells = row.getElementsByTagName("td");
-        const matchesSearch = cells[0].textContent.toLowerCase().includes(searchInput) ||
-                              cells[1].textContent.toLowerCase().includes(searchInput);
-        const statusText = cells[2].textContent.toLowerCase();
-        const translationText = cells[4].textContent.toLowerCase();
-        const matchesStatus = !filterStatus || statusText.includes(filterStatus);
-        const matchesTranslation = !filterTranslation || translationText.includes(filterTranslation);
-
-        row.style.display = matchesSearch && matchesStatus && matchesTranslation ? "" : "none";
-      }
-    }
-
-    function loadModsFromJson() {
-      fetch('https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/mods.json')
-        .then(response => response.json())
-        .then(mods => {
-          const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-          const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
-          table.innerHTML = ''; // Reset della tabella per evitare duplicati
-
-          // Ordina le mods per mettere prima quelle preferite
-          mods.sort((a, b) => {
-            const isFavoriteA = favorites.includes(a.modName);
-            const isFavoriteB = favorites.includes(b.modName);
-            return isFavoriteB - isFavoriteA; // Le preferite vengono prima
-          });
-
-          mods.forEach(mod => {
-            const isFavorite = favorites.includes(mod.modName);
-            const newRow = table.insertRow();
-            newRow.innerHTML = `
-              <td>${mod.author}</td>
-              <td>${mod.modName} ${isFavorite ? '<span class="favorite">★</span>' : ''}</td>
-              <td><span class="status ${mod.status}">${mod.status.toUpperCase()}</span></td>
-              <td><a href="${mod.siteLink}" target="_blank">Visita</a></td>
-              <td><a href="${mod.directLink}" target="_blank">Scarica</a></td>
-              <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
-              <td>${mod.dependency || 'None'}</td>
-              <td>
-                <button class="favorite-button" onclick="toggleFavorite('${mod.modName}')">
-                  ${isFavorite ? "Rimuovi dai preferiti" : "Aggiungi ai preferiti"}
-                </button>
-              </td>
-            `;
-          });
-        })
-        .catch(error => console.error('Errore nel caricare il JSON:', error));
-    }
-
-    function toggleFavorite(modName) {
-      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-      if (favorites.includes(modName)) {
-        favorites = favorites.filter(favorite => favorite !== modName);
-        alert(modName + " è stato rimosso dai preferiti.");
-      } else {
-        favorites.push(modName);
-        alert(modName + " è stato aggiunto ai preferiti!");
-      }
-      localStorage.setItem("favorites", JSON.stringify(favorites));
-      loadModsFromJson(); // Ricarica la tabella per aggiornare i pulsanti e l'ordine
-    }
-
-    window.onload = loadModsFromJson;
-  </script>
+  <footer>
+    © 2025 Pianeta Sim. Tutti i diritti riservati.
+  </footer>
 </body>
 </html>
