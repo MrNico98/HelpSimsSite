@@ -3,7 +3,8 @@
     "author": "Adeepindigo",
     "modName": "Babysitting Gigs",
     "status": "",
-    "link": "https://adeepindigomods.itch.io/babysitting-gigs",
+    "siteLink": "https://adeepindigomods.itch.io/babysitting-gigs",
+    "directLink": "https://example.com/mod1-download",
     "translation": "da-scaricare",
     "dependency": "General Pie Menus - DLC Vita sull'Isola - DLC Raccomandato (Genitorialità)"
   },
@@ -11,7 +12,8 @@
     "author": "Adeepindigo",
     "modName": "Better Daycare",
     "status": "aggiornata",
-    "link": "https://adeepindigomods.itch.io/better-daycare",
+    "siteLink": "https://adeepindigomods.itch.io/better-daycare",
+    "directLink": "https://example.com/mod1-download",
     "translation": "da-scaricare",
     "dependency": "Core Library"
   },
@@ -19,7 +21,8 @@
     "author": "Adeepindigo",
     "modName": "Custom Nuptials",
     "status": "",
-    "link": "https://adeepindigomods.itch.io/custom-nuptials",
+    "siteLink": "https://adeepindigomods.itch.io/custom-nuptials",
+    "directLink": "https://example.com/mod1-download",
     "translation": "da-scaricare",
     "dependency": "General Pie Menus - ATTENZIONE leggere attentamente la descrizione dei CONFLITTI con altre mod"
   },
@@ -27,7 +30,8 @@
     "author": "Adeepindigo",
     "modName": "Date Night Activities",
     "status": "",
-    "link": "https://www.patreon.com/posts/rabbithole-mods-84780425",
+    "siteLink": "https://www.patreon.com/posts/rabbithole-mods-84780425",
+    "directLink": "https://example.com/mod1-download",
     "translation": "da-scaricare",
     "dependency": "General Pie Menus - Core Library"
   },
@@ -35,7 +39,8 @@
     "author": "Adeepindigo",
     "modName": "Delinquent Teens",
     "status": "",
-    "link": "https://adeepindigomods.itch.io/delinquent-teens",
+    "siteLink": "https://adeepindigomods.itch.io/delinquent-teens",
+    "directLink": "https://example.com/mod1-download",
     "translation": "da-scaricare",
     "dependency": "General Pie Menus - Shared Tuning - Mood Pack - DLC Alcuni Raccomandati"
   }
