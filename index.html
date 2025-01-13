@@ -42,7 +42,7 @@
 
     .button-container {
       display: flex;
-      flex-wrap: wrap; /* Adattabile su più righe */
+      flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
       margin: 40px auto;
@@ -62,10 +62,18 @@
       font-size: 16px;
       transition: background-color 0.3s ease, transform 0.2s;
       display: inline-block;
-      width: 200px; /* Larghezza fissa */
+      width: 200px;
       border: none;
       cursor: pointer;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .button-container a img,
+    .button-container button img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      vertical-align: middle;
     }
 
     .button-container a:hover,
@@ -81,7 +89,7 @@
     }
 
     .mod-table {
-      display: none; /* Nascondi la tabella inizialmente */
+      display: none;
       margin: 30px auto;
       border-collapse: collapse;
       width: 90%;
@@ -110,7 +118,7 @@
     }
 
     footer {
-      margin-top: auto; /* Spinge il footer in basso */
+      margin-top: auto;
       text-align: center;
       padding: 15px 0;
       background-color: rgba(0, 0, 0, 0.8);
@@ -127,7 +135,7 @@
 
       .button-container a,
       .button-container button {
-        width: 100%; /* Bottoni si espandono */
+        width: 100%;
         padding: 12px;
         font-size: 14px;
       }
@@ -155,12 +163,16 @@
   </header>
 
   <div class="button-container">
-    <a href="mod.html">MOD</a>
+    <a href="mod.html">
+      <img src="HelpSimspianeta.png" alt="MOD Icon"> MOD
+    </a>
     <a href="#">MOD +18</a>
     <a href="#">ANIMAZIONI WICKED WHIMS +18</a>
     <a href="#">TRADUZIONI</a>
     <a href="#">PROGRAMMI</a>
-    <button onclick="toggleTable()">Lista MOD</button>
+    <button onclick="toggleTable()">
+      <img src="HelpSimspianeta.png" alt="Lista Icon"> Lista MOD
+    </button>
   </div>
 
   <table class="mod-table" id="modTable">
@@ -191,7 +203,4 @@
   </table>
 
   <footer>
-    © 2025 Pianeta Sim. Tutti i diritti riservati. | @Pianeta Sim
-  </footer>
-</body>
-</html>
+    © 2025 Pianeta Sim. Tutti
