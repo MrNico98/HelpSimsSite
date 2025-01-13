@@ -6,32 +6,7 @@
   <title>Pianeta Sim</title>
   <link rel="icon" type="image/png" href="HelpSimspianeta.png">
   <style>
-    /* Stili generali... */
-    body {
-      font-family: 'Roboto', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #4b6cb7, #182848);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* Aggiungere stili per la tabella e la ricerca... */
-
-    .mod-table {
-      margin: 30px auto;
-      border-collapse: collapse;
-      width: 90%;
-      max-width: 800px;
-      background-color: #fff;
-      color: #333;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-    }
+    /* Aggiungi le tue stilizzazioni qui, restano invariati gli stili principali */
 
     .mod-table th, .mod-table td {
       border: 1px solid #ddd;
@@ -39,123 +14,106 @@
       text-align: left;
     }
 
+    /* Aggiungi stili per la colonna di data */
     .mod-table th {
       background: linear-gradient(135deg, #4CAF50, #2E7D32);
       color: white;
       text-align: center;
     }
-
-    .mod-table tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-
-    .mod-table td.hidden {
-      display: none;
-    }
-    
     /* Media Query per schermi piccoli */
     @media (max-width: 600px) {
+      header h1 {
+        font-size: 24px;
+      }
+
+      .button-container a,
+      .button-container button {
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+      }
+
       .mod-table th, .mod-table td {
         font-size: 12px;
       }
     }
   </style>
   <script>
-    // Aggiungere codice per gestione della tabella e la ricerca
-
-    const modData = [
-      {
-        "author": "Adeepindigo",
-        "modName": "Babysitting Gigs",
-        "status": "",
-        "siteLink": "https://adeepindigomods.itch.io/babysitting-gigs",
-        "directLink": "https://example.com/mod1-download",
-        "translation": "da-scaricare",
-        "categoria": "medico",
-        "dependency": "General Pie Menus - DLC Vita sull'Isola - DLC Raccomandato (Genitorialità)"
-      },
-      {
-        "author": "Adeepindigo",
-        "modName": "Better Daycare",
-        "status": "aggiornata",
-        "siteLink": "https://adeepindigomods.itch.io/better-daycare",
-        "directLink": "https://example.com/mod1-download",
-        "translation": "da-scaricare",
-        "dependency": "Core Library"
-      },
-      {
-        "author": "Adeepindigo",
-        "modName": "Custom Nuptials",
-        "status": "",
-        "siteLink": "https://adeepindigomods.itch.io/custom-nuptials",
-        "directLink": "https://example.com/mod1-download",
-        "translation": "da-scaricare",
-        "dependency": "General Pie Menus - ATTENZIONE leggere attentamente la descrizione dei CONFLITTI con altre mod"
-      },
-      {
-        "author": "Adeepindigo",
-        "modName": "Date Night Activities",
-        "status": "",
-        "siteLink": "https://www.patreon.com/posts/rabbithole-mods-84780425",
-        "directLink": "https://example.com/mod1-download",
-        "translation": "da-scaricare",
-        "dependency": "General Pie Menus - Core Library"
-      },
-      {
-        "author": "Adeepindigo",
-        "modName": "Delinquent Teens",
-        "status": "",
-        "siteLink": "https://adeepindigomods.itch.io/delinquent-teens",
-        "directLink": "https://example.com/mod1-download",
-        "translation": "da-scaricare",
-        "dependency": "General Pie Menus - Shared Tuning - Mood Pack - DLC Alcuni Raccomandati"
+    function toggleTable() {
+      const table = document.getElementById("modTable");
+      if (table.style.display === "none" || table.style.display === "") {
+        table.style.display = "table";
+      } else {
+        table.style.display = "none";
       }
-    ];
+    }
 
-    // Funzione per aggiornare la tabella con i dati del JSON
-    function renderTable() {
-      const tableBody = document.getElementById("modTableBody");
-      tableBody.innerHTML = ''; // Svuota la tabella prima di aggiungere nuovi dati
+    // Caricamento dei dati dal file JSON
+    document.addEventListener("DOMContentLoaded", function() {
+      const modData = [
+        {
+          "author": "Adeepindigo",
+          "modName": "Babysitting Gigs",
+          "status": "",
+          "siteLink": "https://adeepindigomods.itch.io/babysitting-gigs",
+          "directLink": "https://example.com/mod1-download",
+          "translation": "da-scaricare",
+          "categoria": "Dottore, polizia",
+          "dependency": "General Pie Menus - DLC Vita sull'Isola - DLC Raccomandato (Genitorialità)"
+        },
+        {
+          "author": "Adeepindigo",
+          "modName": "Better Daycare",
+          "status": "aggiornata",
+          "siteLink": "https://adeepindigomods.itch.io/better-daycare",
+          "directLink": "https://example.com/mod1-download",
+          "translation": "da-scaricare",
+          "categoria": "Dottore",
+          "dependency": "Core Library"
+        }
+      ];
+
+      const modTableBody = document.getElementById('modTableBody');
+      const todayDate = new Date().toLocaleDateString('it-IT');
+      
       modData.forEach(mod => {
-        const row = document.createElement("tr");
+        const row = document.createElement('tr');
+        
+        // Colonne Mod Name, Descrizione, Autore
+        const modNameCell = document.createElement('td');
+        modNameCell.textContent = mod.modName;
+        row.appendChild(modNameCell);
 
-        // Nome Mod
-        const nameCell = document.createElement("td");
-        nameCell.textContent = mod.modName;
-        row.appendChild(nameCell);
-
-        // Descrizione (vuota per ora, puoi aggiungere descrizioni nel JSON)
-        const descriptionCell = document.createElement("td");
-        descriptionCell.textContent = "Descrizione non disponibile";
+        const descriptionCell = document.createElement('td');
+        descriptionCell.textContent = mod.translation;
         row.appendChild(descriptionCell);
 
-        // Autore
-        const authorCell = document.createElement("td");
+        const authorCell = document.createElement('td');
         authorCell.textContent = mod.author;
         row.appendChild(authorCell);
 
-        // Data di aggiornamento
-        const dateCell = document.createElement("td");
-        const currentDate = mod.status === "aggiornata" ? new Date().toLocaleDateString() : "Non aggiornata";
-        dateCell.textContent = currentDate;
-        row.appendChild(dateCell);
+        // Aggiungi la colonna di data di aggiornamento
+        const updateDateCell = document.createElement('td');
+        updateDateCell.textContent = mod.status === 'aggiornata' ? todayDate : 'Non aggiornata';
+        row.appendChild(updateDateCell);
 
-        tableBody.appendChild(row);
+        modTableBody.appendChild(row);
       });
-    }
+    });
 
     // Funzione di ricerca per categoria
-    function filterCategory() {
-      const searchInput = document.getElementById("categorySearch").value.toLowerCase();
-      const rows = document.querySelectorAll("#modTableBody tr");
+    function filterByCategory() {
+      const searchTerm = document.getElementById('searchCategory').value.toLowerCase();
+      const rows = document.querySelectorAll('#modTableBody tr');
+      
       rows.forEach(row => {
-        const categoryCell = row.cells[0].textContent.toLowerCase(); // Ignoriamo la colonna categoria
-        row.style.display = categoryCell.includes(searchInput) ? "" : "none";
+        const categoria = row.cells[4].textContent.toLowerCase();
+        if (categoria.includes(searchTerm)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
       });
-    }
-
-    window.onload = function() {
-      renderTable(); // Carica la tabella al caricamento della pagina
     }
   </script>
 </head>
@@ -176,10 +134,8 @@
     <button onclick="toggleTable()">
       <img src="HelpSimspianeta.png" alt="Lista Icon"> Lista MOD
     </button>
+    <input type="text" id="searchCategory" onkeyup="filterByCategory()" placeholder="Cerca per categoria">
   </div>
-
-  <!-- Campo di ricerca per categoria -->
-  <input type="text" id="categorySearch" placeholder="Cerca per categoria" onkeyup="filterCategory()">
 
   <table class="mod-table" id="modTable">
     <thead>
@@ -187,10 +143,12 @@
         <th>Nome Mod</th>
         <th>Descrizione</th>
         <th>Autore</th>
-        <th>Data di Aggiornamento</th>
+        <th>Data Aggiornamento</th> <!-- Colonna per la data -->
       </tr>
     </thead>
-    <tbody id="modTableBody"></tbody>
+    <tbody id="modTableBody">
+      <!-- Le righe saranno inserite dinamicamente con JS -->
+    </tbody>
   </table>
 
   <footer>
