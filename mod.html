@@ -155,24 +155,25 @@
     }
 
     /* Stile per la stella */
+.star-container {
+  display: inline-block;
+  text-align: center; /* Centrato orizzontalmente */
+  width: 30px; /* Imposta la larghezza della colonna */
+}
+
 .star {
-  font-size: 20px;
+  font-size: 14px; /* Riduci la dimensione della stella */
   cursor: pointer;
   color: grey;
-  display: none; /* Nasconde la stella grigia di default */
+  display: inline-block; /* Mostra la stella grigia */
 }
 
 .star.favorite {
-  color: gold; /* Stella gialla fissa per le preferite */
-  display: inline; /* La stella gialla è sempre visibile */
+  color: gold; /* Stella gialla per le preferite */
 }
 
 .mod-name:hover .star {
-  display: inline; /* Mostra la stella grigia al passaggio del mouse per le non preferite */
-}
-
-.star-container {
-  display: inline-block;
+  display: inline-block; /* La stella grigia è sempre visibile quando si passa sopra la mod */
 }
   </style>
 </head>
