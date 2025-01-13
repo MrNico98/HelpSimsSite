@@ -215,28 +215,32 @@
   </table>
 
   <script>
-    function filterTable() {
-      const searchInput = document.getElementById("search").value.toLowerCase();
-      const filterStatus = document.getElementById("filter-status").value.toLowerCase();
-      const filterTranslation = document.getElementById("filter-translation").value.toLowerCase();
-      const filterCategory = document.getElementById("filter-category").value.toLowerCase();
-      const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
-      const rows = table.getElementsByTagName("tr");
+function filterTable() {
+  const searchInput = document.getElementById("search").value.toLowerCase();
+  const filterStatus = document.getElementById("filter-status").value.toLowerCase();
+  const filterTranslation = document.getElementById("filter-translation").value.toLowerCase();
+  const filterCategory = document.getElementById("filter-category").value.toLowerCase();
+  const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
+  const rows = table.getElementsByTagName("tr");
 
-      for (let row of rows) {
-        const cells = row.getElementsByTagName("td");
-        const matchesSearch = cells[0].textContent.toLowerCase().includes(searchInput) ||
-                              cells[1].textContent.toLowerCase().includes(searchInput);
-        const statusText = cells[2].textContent.toLowerCase();
-        const translationText = cells[4].textContent.toLowerCase();
-        const categoryText = cells[5].textContent.toLowerCase();
-        const matchesStatus = !filterStatus || statusText.includes(filterStatus);
-        const matchesTranslation = !filterTranslation || translationText.includes(filterTranslation);
-        const matchesCategory = !filterCategory || categoryText.includes(filterCategory);
+  for (let row of rows) {
+    const cells = row.getElementsByTagName("td");
+    const matchesSearch = cells[0].textContent.toLowerCase().includes(searchInput) ||
+                          cells[1].textContent.toLowerCase().includes(searchInput);
+    const statusText = cells[2].textContent.toLowerCase();
+    const translationText = cells[4].textContent.toLowerCase();
+    const categoryText = cells[5].textContent.toLowerCase();
+    
+    const matchesStatus = !filterStatus || statusText.includes(filterStatus);
+    const matchesTranslation = !filterTranslation || translationText.includes(filterTranslation);
+    
+    // Modifica il filtro per la categoria
+    const categories = cells[5].textContent.toLowerCase().split(",").map(cat => cat.trim());
+    const matchesCategory = !filterCategory || categories.includes(filterCategory);
 
-        row.style.display = matchesSearch && matchesStatus && matchesTranslation && matchesCategory ? "" : "none";
-      }
-    }
+    row.style.display = matchesSearch && matchesStatus && matchesTranslation && matchesCategory ? "" : "none";
+  }
+}
 
     function loadModsFromJson() {
       fetch('https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/mods.json')
