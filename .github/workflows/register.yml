@@ -1,0 +1,54 @@
+name: Registrazione utente
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: 'Nome utente'
+        required: true
+        type: string
+      email:
+        description: 'Email'
+        required: true
+        type: string
+      password:
+        description: 'Password'
+        required: true
+        type: string
+
+jobs:
+  register_user:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Install bcryptjs
+        run: |
+          npm install bcryptjs
+
+      - name: Criptare la password
+        run: |
+          const bcrypt = require('bcryptjs');
+          const fs = require('fs');
+          
+          const username = '${{ github.event.inputs.username }}';
+          const email = '${{ github.event.inputs.email }}';
+          const password = '${{ github.event.inputs.password }}';
+          
+          bcrypt.hash(password, 10, function(err, hashedPassword) {
+            if (err) throw err;
+            
+            // Salva i dati nel file (una simulazione)
+            const userData = `Username: ${username}\nEmail: ${email}\nPassword: ${hashedPassword}\n`;
+            fs.appendFileSync('user_data.txt', userData);
+          });
+          
+      - name: Commit e push dei dati
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add user_data.txt
+          git commit -m "Nuova registrazione utente"
+          git push
