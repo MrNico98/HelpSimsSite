@@ -1,43 +1,32 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LISTA MOD</title>
+  <title>Tabella Mod</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     .navbar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-items: center;
-      background-color: #343a40;
+      background-color: #333;
       padding: 10px;
+      text-align: center;
     }
 
-    .navbar a, .navbar button {
+    .navbar a {
       color: white;
-      text-decoration: none;
-      background-color: #007bff;
       padding: 10px 20px;
-      border-radius: 5px;
-      border: none;
-      margin: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      font-size: 16px;
+      text-decoration: none;
+      font-size: 18px;
     }
 
-    .navbar a:hover, .navbar button:hover {
-      background-color: #0056b3;
-      transform: scale(1.1);
+    .navbar a:hover {
+      background-color: #575757;
     }
 
     .button-container {
@@ -154,6 +143,22 @@
         width: 100%;
       }
     }
+
+    /* Stile per la stella */
+    .star {
+      display: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: grey;
+    }
+
+    .star.favorite {
+      color: gold;
+    }
+
+    .mod-name:hover .star {
+      display: inline;
+    }
   </style>
 </head>
 <body>
@@ -215,35 +220,35 @@
   </table>
 
   <script>
-function filterTable() {
-  const searchInput = document.getElementById("search").value.toLowerCase();
-  const filterStatus = document.getElementById("filter-status").value.toLowerCase();
-  const filterTranslation = document.getElementById("filter-translation").value.toLowerCase();
-  const filterCategory = document.getElementById("filter-category").value.toLowerCase();
-  const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
-  const rows = table.getElementsByTagName("tr");
+    function filterTable() {
+      const searchInput = document.getElementById("search").value.toLowerCase();
+      const filterStatus = document.getElementById("filter-status").value.toLowerCase();
+      const filterTranslation = document.getElementById("filter-translation").value.toLowerCase();
+      const filterCategory = document.getElementById("filter-category").value.toLowerCase();
+      const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
+      const rows = table.getElementsByTagName("tr");
 
-  for (let row of rows) {
-    const cells = row.getElementsByTagName("td");
-    const modName = cells[1].textContent.toLowerCase();
-    const author = cells[0].textContent.toLowerCase();
-    const statusText = cells[2].textContent.toLowerCase();
-    const translationText = cells[4].textContent.toLowerCase();
+      for (let row of rows) {
+        const cells = row.getElementsByTagName("td");
+        const modName = cells[1].textContent.toLowerCase();
+        const author = cells[0].textContent.toLowerCase();
+        const statusText = cells[2].textContent.toLowerCase();
+        const translationText = cells[4].textContent.toLowerCase();
 
-    const matchesSearch = modName.includes(searchInput) || author.includes(searchInput);
-    const matchesStatus = !filterStatus || statusText.includes(filterStatus);
-    const matchesTranslation = !filterTranslation || translationText.includes(filterTranslation);
+        const matchesSearch = modName.includes(searchInput) || author.includes(searchInput);
+        const matchesStatus = !filterStatus || statusText.includes(filterStatus);
+        const matchesTranslation = !filterTranslation || translationText.includes(filterTranslation);
 
-    // Recupera la categoria (se presente) dalla proprietà "data-categories"
-    const categories = row.getAttribute("data-categories") ? row.getAttribute("data-categories").toLowerCase().split(",").map(cat => cat.trim()) : [];
+        // Recupera la categoria (se presente) dalla proprietà "data-categories"
+        const categories = row.getAttribute("data-categories") ? row.getAttribute("data-categories").toLowerCase().split(",").map(cat => cat.trim()) : [];
 
-    // Se il filtro categoria è "Tutte", mostra tutte le mod, anche quelle senza categoria
-    const matchesCategory = !filterCategory || filterCategory === "tutte" || categories.includes(filterCategory);
+        // Se il filtro categoria è "Tutte", mostra tutte le mod, anche quelle senza categoria
+        const matchesCategory = !filterCategory || filterCategory === "tutte" || categories.includes(filterCategory);
 
-    // Nascondi o mostra la riga in base ai filtri
-    row.style.display = matchesSearch && matchesStatus && matchesTranslation && matchesCategory ? "" : "none";
-  }
-}
+        // Nascondi o mostra la riga in base ai filtri
+        row.style.display = matchesSearch && matchesStatus && matchesTranslation && matchesCategory ? "" : "none";
+      }
+    }
 
     function loadModsFromJson() {
       fetch('https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/mods.json')
@@ -277,31 +282,30 @@ function filterTable() {
             return isFavoriteB - isFavoriteA; // Le preferite vengono prima
           });
 
-mods.forEach(mod => {
-  const isFavorite = favorites.includes(mod.modName);
-  const today = new Date().toLocaleDateString('it-IT');
-  const newRow = table.insertRow();
+          mods.forEach(mod => {
+            const isFavorite = favorites.includes(mod.modName);
+            const today = new Date().toLocaleDateString('it-IT');
+            const newRow = table.insertRow();
 
-  // Se la mod non ha categoria, impostiamo "tutte"
-  const categories = mod.categoria ? mod.categoria.toLowerCase() : "tutte";
-  newRow.setAttribute("data-categories", categories); // Aggiungi le categorie come attributo
-  
-  newRow.innerHTML = `
-    <td>${mod.author}</td>
-    <td>${mod.modName} ${isFavorite ? '<span class="favorite">★</span>' : ''}</td>
-    <td><span class="status ${mod.status}">${mod.status.toUpperCase()}</span></td>
-    <td><a href="${mod.siteLink}" target="_blank">Visita</a></td>
-    <td><a href="${mod.directLink}" target="_blank">Scarica</a></td>
-    <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
-    <td>${mod.dependency || 'None'}</td>
-    <td>${mod.status.toLowerCase() === 'aggiornata' ? today : ''}</td>
-    <td>
-      <button class="favorite-button" onclick="toggleFavorite('${mod.modName}')">
-        ${isFavorite ? "Rimuovi dai preferiti" : "Aggiungi ai preferiti"}
-      </button>
-    </td>
-  `;
-});
+            // Se la mod non ha categoria, impostiamo "tutte"
+            const categories = mod.categoria ? mod.categoria.toLowerCase() : "tutte";
+            newRow.setAttribute("data-categories", categories); // Aggiungi le categorie come attributo
+
+            newRow.innerHTML = `
+              <td>${mod.author}</td>
+              <td class="mod-name">
+                ${mod.modName}
+                <span class="star ${isFavorite ? 'favorite' : ''}" onclick="toggleFavorite('${mod.modName}')">&#9733;</span>
+              </td>
+              <td><span class="status ${mod.status}">${mod.status.toUpperCase()}</span></td>
+              <td><a href="${mod.siteLink}" target="_blank">Visita</a></td>
+              <td><a href="${mod.directLink}" target="_blank">Scarica</a></td>
+              <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
+              <td>${mod.dependency || 'None'}</td>
+              <td>${mod.status.toLowerCase() === 'aggiornata' ? today : ''}</td>
+              <td></td>
+            `;
+          });
         })
         .catch(error => console.error('Errore nel caricare il JSON:', error));
     }
@@ -316,7 +320,7 @@ mods.forEach(mod => {
         alert(modName + " è stato aggiunto ai preferiti!");
       }
       localStorage.setItem("favorites", JSON.stringify(favorites));
-      loadModsFromJson(); // Ricarica la tabella per aggiornare i pulsanti e l'ordine
+      loadModsFromJson(); // Ricarica la tabella per aggiornare le stelle
     }
 
     window.onload = loadModsFromJson;
