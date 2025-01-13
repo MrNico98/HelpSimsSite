@@ -215,88 +215,84 @@
   </table>
 
   <script>
-function filterTable() {
-  const searchInput = document.getElementById("search").value.toLowerCase();
-  const filterStatus = document.getElementById("filter-status").value.toLowerCase();
-  const filterTranslation = document.getElementById("filter-translation").value.toLowerCase();
-  const filterCategory = document.getElementById("filter-category").value.toLowerCase();
-  const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
-  const rows = table.getElementsByTagName("tr");
-
-  for (let row of rows) {
-    const cells = row.getElementsByTagName("td");
-    const matchesSearch = cells[0].textContent.toLowerCase().includes(searchInput) ||
-                          cells[1].textContent.toLowerCase().includes(searchInput);
-    const statusText = cells[2].textContent.toLowerCase();
-    const translationText = cells[4].textContent.toLowerCase();
-    const categoryText = cells[5].textContent.toLowerCase();
-    const matchesStatus = !filterStatus || statusText.includes(filterStatus);
-    const matchesTranslation = !filterTranslation || translationText.includes(filterTranslation);
-
-    // Aggiunta logica per il filtro delle categorie
-    const categories = categoryText.split(',').map(category => category.trim().toLowerCase());
-    const matchesCategory = !filterCategory || categories.some(category => category.includes(filterCategory));
-
-    row.style.display = matchesSearch && matchesStatus && matchesTranslation && matchesCategory ? "" : "none";
-  }
-}
-function loadModsFromJson() {
-  fetch('https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/mods.json')
-    .then(response => response.json())
-    .then(mods => {
-      const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    function filterTable() {
+      const searchInput = document.getElementById("search").value.toLowerCase();
+      const filterStatus = document.getElementById("filter-status").value.toLowerCase();
+      const filterTranslation = document.getElementById("filter-translation").value.toLowerCase();
+      const filterCategory = document.getElementById("filter-category").value.toLowerCase();
       const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
-      const categorySelect = document.getElementById("filter-category");
+      const rows = table.getElementsByTagName("tr");
 
-      table.innerHTML = ''; // Reset della tabella per evitare duplicati
+      for (let row of rows) {
+        const cells = row.getElementsByTagName("td");
+        const matchesSearch = cells[0].textContent.toLowerCase().includes(searchInput) ||
+                              cells[1].textContent.toLowerCase().includes(searchInput);
+        const statusText = cells[2].textContent.toLowerCase();
+        const translationText = cells[4].textContent.toLowerCase();
+        const categoryText = cells[5].textContent.toLowerCase();
+        const matchesStatus = !filterStatus || statusText.includes(filterStatus);
+        const matchesTranslation = !filterTranslation || translationText.includes(filterTranslation);
+        const matchesCategory = !filterCategory || categoryText.includes(filterCategory);
 
-      // Collezioniamo tutte le categorie uniche
-      const categories = new Set();
-      mods.forEach(mod => {
-        if (mod.categoria) {
-          mod.categoria.split(',').forEach(cat => {
-            categories.add(cat.trim().toLowerCase()); // Aggiungi categoria unica
+        row.style.display = matchesSearch && matchesStatus && matchesTranslation && matchesCategory ? "" : "none";
+      }
+    }
+
+    function loadModsFromJson() {
+      fetch('https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/mods.json')
+        .then(response => response.json())
+        .then(mods => {
+          const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+          const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
+          table.innerHTML = ''; // Reset della tabella per evitare duplicati
+
+          // Estrai tutte le categorie uniche per il filtro
+          const categories = new Set();
+          mods.forEach(mod => {
+            if (mod.categoria) {
+              mod.categoria.split(",").forEach(category => categories.add(category.trim().toLowerCase()));
+            }
           });
-        }
-      });
 
-      // Aggiungi le categorie al filtro
-      categorySelect.innerHTML = '<option value="">Tutte</option>'; // Reset prima di aggiungere
-      categories.forEach(category => {
-        const option = document.createElement("option");
-        option.value = category;
-        option.textContent = category.charAt(0).toUpperCase() + category.slice(1); // Capitalizza la prima lettera
-        categorySelect.appendChild(option);
-      });
+          // Aggiungi le categorie al filtro
+          const categorySelect = document.getElementById("filter-category");
+          categories.forEach(category => {
+            const option = document.createElement("option");
+            option.value = category;
+            option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+            categorySelect.appendChild(option);
+          });
 
-      mods.sort((a, b) => {
-        const isFavoriteA = favorites.includes(a.modName);
-        const isFavoriteB = favorites.includes(b.modName);
-        return isFavoriteB - isFavoriteA; // Le preferite vengono prima
-      });
+          // Ordina le mods per mettere prima quelle preferite
+          mods.sort((a, b) => {
+            const isFavoriteA = favorites.includes(a.modName);
+            const isFavoriteB = favorites.includes(b.modName);
+            return isFavoriteB - isFavoriteA; // Le preferite vengono prima
+          });
 
-      mods.forEach(mod => {
-        const isFavorite = favorites.includes(mod.modName);
-        const newRow = table.insertRow();
-        newRow.innerHTML = `
-          <td>${mod.author}</td>
-          <td>${mod.modName} ${isFavorite ? '<span class="favorite">★</span>' : ''}</td>
-          <td><span class="status ${mod.status}">${mod.status.toUpperCase()}</span></td>
-          <td><a href="${mod.siteLink}" target="_blank">Visita</a></td>
-          <td><a href="${mod.directLink}" target="_blank">Scarica</a></td>
-          <td>${mod.categoria}</td> <!-- Colonna Categoria -->
-          <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
-          <td>${mod.dependency || 'None'}</td>
-          <td>
-            <button class="favorite-button" onclick="toggleFavorite('${mod.modName}')">
-              ${isFavorite ? "Rimuovi dai preferiti" : "Aggiungi ai preferiti"}
-            </button>
-          </td>
-        `;
-      });
-    })
-    .catch(error => console.error('Errore nel caricare il JSON:', error));
-}
+          mods.forEach(mod => {
+            const isFavorite = favorites.includes(mod.modName);
+            const today = new Date().toLocaleDateString('it-IT');
+            const newRow = table.insertRow();
+            newRow.innerHTML = `
+              <td>${mod.author}</td>
+              <td>${mod.modName} ${isFavorite ? '<span class="favorite">★</span>' : ''}</td>
+              <td><span class="status ${mod.status}">${mod.status.toUpperCase()}</span></td>
+              <td><a href="${mod.siteLink}" target="_blank">Visita</a></td>
+              <td><a href="${mod.directLink}" target="_blank">Scarica</a></td>
+              <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
+              <td>${mod.dependency || 'None'}</td>
+              <td>${mod.status.toLowerCase() === 'aggiornata' ? today : ''}</td>
+              <td>
+                <button class="favorite-button" onclick="toggleFavorite('${mod.modName}')">
+                  ${isFavorite ? "Rimuovi dai preferiti" : "Aggiungi ai preferiti"}
+                </button>
+              </td>
+            `;
+          });
+        })
+        .catch(error => console.error('Errore nel caricare il JSON:', error));
+    }
 
     function toggleFavorite(modName) {
       let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
