@@ -234,11 +234,11 @@ function filterTable() {
     const matchesStatus = !filterStatus || statusText.includes(filterStatus);
     const matchesTranslation = !filterTranslation || translationText.includes(filterTranslation);
 
-    // Recupera la categoria (se presente) dalla proprietà "categoria" del JSON
+    // Recupera la categoria (se presente) dalla proprietà "data-categories"
     const categories = row.getAttribute("data-categories") ? row.getAttribute("data-categories").toLowerCase().split(",").map(cat => cat.trim()) : [];
 
     // Se il filtro categoria è "Tutte", mostra tutte le mod, anche quelle senza categoria
-    const matchesCategory = !filterCategory || filterCategory === "tutte" || categories.length === 0 || categories.includes(filterCategory);
+    const matchesCategory = !filterCategory || filterCategory === "tutte" || categories.includes(filterCategory);
 
     // Nascondi o mostra la riga in base ai filtri
     row.style.display = matchesSearch && matchesStatus && matchesTranslation && matchesCategory ? "" : "none";
@@ -281,7 +281,11 @@ mods.forEach(mod => {
   const isFavorite = favorites.includes(mod.modName);
   const today = new Date().toLocaleDateString('it-IT');
   const newRow = table.insertRow();
-  newRow.setAttribute("data-categories", mod.categoria.toLowerCase()); // Aggiungi le categorie come attributo
+
+  // Se la mod non ha categoria, impostiamo "tutte"
+  const categories = mod.categoria ? mod.categoria.toLowerCase() : "tutte";
+  newRow.setAttribute("data-categories", categories); // Aggiungi le categorie come attributo
+  
   newRow.innerHTML = `
     <td>${mod.author}</td>
     <td>${mod.modName} ${isFavorite ? '<span class="favorite">★</span>' : ''}</td>
