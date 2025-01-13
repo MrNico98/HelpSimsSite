@@ -187,6 +187,9 @@
       <option value="In lavorazione">In lavorazione</option>
       <option value="Da scaricare">Da scaricare</option>
     </select>
+
+    <label for="filter-category">Filtra per categoria:</label>
+    <input type="text" id="filter-category" oninput="filterTable()" placeholder="Categoria...">
   </div>
 
   <table id="mods-table">
@@ -199,6 +202,7 @@
         <th>LINK DIRETTO</th>
         <th>TRADUZIONE</th>
         <th>PER IL FUNZIONAMENTO SERVE</th>
+        <th>DATA</th>
         <th>AZIONI</th>
       </tr>
     </thead>
@@ -212,6 +216,7 @@
       const searchInput = document.getElementById("search").value.toLowerCase();
       const filterStatus = document.getElementById("filter-status").value.toLowerCase();
       const filterTranslation = document.getElementById("filter-translation").value.toLowerCase();
+      const filterCategory = document.getElementById("filter-category").value.toLowerCase();
       const table = document.getElementById("mods-table").getElementsByTagName("tbody")[0];
       const rows = table.getElementsByTagName("tr");
 
@@ -221,10 +226,12 @@
                               cells[1].textContent.toLowerCase().includes(searchInput);
         const statusText = cells[2].textContent.toLowerCase();
         const translationText = cells[4].textContent.toLowerCase();
+        const categoryText = cells[1].textContent.toLowerCase();  // Categoria all'interno del nome del mod
         const matchesStatus = !filterStatus || statusText.includes(filterStatus);
         const matchesTranslation = !filterTranslation || translationText.includes(filterTranslation);
+        const matchesCategory = !filterCategory || categoryText.includes(filterCategory);
 
-        row.style.display = matchesSearch && matchesStatus && matchesTranslation ? "" : "none";
+        row.style.display = matchesSearch && matchesStatus && matchesTranslation && matchesCategory ? "" : "none";
       }
     }
 
@@ -243,6 +250,8 @@
             return isFavoriteB - isFavoriteA; // Le preferite vengono prima
           });
 
+          const currentDate = new Date().toLocaleDateString();
+
           mods.forEach(mod => {
             const isFavorite = favorites.includes(mod.modName);
             const newRow = table.insertRow();
@@ -254,6 +263,7 @@
               <td><a href="${mod.directLink}" target="_blank">Scarica</a></td>
               <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
               <td>${mod.dependency || 'None'}</td>
+              <td>${mod.status === "Aggiornata" ? currentDate : ''}</td>
               <td>
                 <button class="favorite-button" onclick="toggleFavorite('${mod.modName}')">
                   ${isFavorite ? "Rimuovi dai preferiti" : "Aggiungi ai preferiti"}
