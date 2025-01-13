@@ -159,26 +159,21 @@
   font-size: 20px;
   cursor: pointer;
   color: grey;
+  display: none; /* Nasconde la stella grigia di default */
 }
-
 
 .star.favorite {
   color: gold; /* Stella gialla fissa per le preferite */
   display: inline; /* La stella gialla è sempre visibile */
 }
 
-.mod-name {
-  display: flex;
-  align-items: center;  /* Allinea la stella e il nome */
-  justify-content: flex-start; /* Allinea a sinistra */
-  width: 100%; /* Assicurati che prenda tutta la larghezza disponibile */
+.mod-name:hover .star {
+  display: inline; /* Mostra la stella grigia al passaggio del mouse per le non preferite */
 }
-
 
 .star-container {
-  margin-right: 5px; /* Spazio tra la stella e il nome */
+  display: inline-block;
 }
-
   </style>
 </head>
 <body>
@@ -310,21 +305,21 @@
             const categories = mod.categoria ? mod.categoria.toLowerCase() : "tutte";
             newRow.setAttribute("data-categories", categories); // Aggiungi le categorie come attributo
 
-newRow.innerHTML = `
-  <td>${mod.author}</td>
-  <td class="mod-name">
-    <span class="star-container">
-      <span class="star ${isFavorite ? 'favorite' : ''}" onclick="toggleFavorite('${mod.modName}')">&#9733;</span>
-    </span>
-    ${mod.modName}
-  </td>
-  <td><span class="status ${mod.status}">${mod.status.toUpperCase()}</span></td>
-  <td><a href="${mod.siteLink}" target="_blank">Visita</a></td>
-  <td><a href="${mod.directLink}" target="_blank">Scarica</a></td>
-  <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
-  <td>${mod.dependency || 'None'}</td>
-  <td>${mod.status.toLowerCase() === 'aggiornata' ? today : ''}</td>
-`;
+            newRow.innerHTML = 
+              <td>${mod.author}</td>
+              <td class="mod-name">
+                ${mod.modName}
+                <span class="star-container">
+                  <span class="star ${isFavorite ? 'favorite' : ''}" onclick="toggleFavorite('${mod.modName}')">&#9733;</span>
+                </span>
+              </td>
+              <td><span class="status ${mod.status}">${mod.status.toUpperCase()}</span></td>
+              <td><a href="${mod.siteLink}" target="_blank">Visita</a></td>
+              <td><a href="${mod.directLink}" target="_blank">Scarica</a></td>
+              <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
+              <td>${mod.dependency || 'None'}</td>
+              <td>${mod.status.toLowerCase() === 'aggiornata' ? today : ''}</td>
+            ;
           });
         })
         .catch(error => console.error('Errore nel caricare il JSON:', error));
@@ -347,4 +342,3 @@ newRow.innerHTML = `
   </script>
 </body>
 </html>
-
