@@ -150,59 +150,60 @@
 
   <script>
     // Funzione per ottenere e visualizzare i dati della tabella
-    fetch('https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/Json/traduzioni.json')
-      .then(response => response.json())
-      .then(data => {
-        const tableBody = document.querySelector('#modTable tbody');
-        data.forEach(item => {
-          const row = document.createElement('tr');
+// Funzione per ottenere e visualizzare i dati della tabella
+fetch('https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/Json/traduzioni.json')
+  .then(response => response.json())
+  .then(data => {
+    const tableBody = document.querySelector('#modTable tbody');
+    data.forEach(item => {
+      const row = document.createElement('tr');
 
-          // Crea le celle per ogni colonna
-          const creatorCell = document.createElement('td');
-          creatorCell.textContent = item.creator;
-          row.appendChild(creatorCell);
+      // Crea le celle per ogni colonna
+      const creatorCell = document.createElement('td');
+      creatorCell.textContent = item.creator;
+      row.appendChild(creatorCell);
 
-          const titleCell = document.createElement('td');
-          titleCell.textContent = item.title;
-          row.appendChild(titleCell);
+      const titleCell = document.createElement('td');
+      titleCell.textContent = item.title;
+      row.appendChild(titleCell);
 
-          const releaseVersionCell = document.createElement('td');
-          releaseVersionCell.textContent = item.release_version;
-          row.appendChild(releaseVersionCell);
+      const releaseVersionCell = document.createElement('td');
+      releaseVersionCell.textContent = item.release_version;
+      row.appendChild(releaseVersionCell);
 
-          const currentVersionCell = document.createElement('td');
-          currentVersionCell.textContent = item.current_version;
-          row.appendChild(currentVersionCell);
+      const currentVersionCell = document.createElement('td');
+      currentVersionCell.textContent = item.current_version;
+      row.appendChild(currentVersionCell);
 
-          const statusCell = document.createElement('td');
-          const statusDiv = document.createElement('div');
-          statusDiv.classList.add('status', item.status.toLowerCase().replace(/\s+/g, '-'));
-          statusDiv.textContent = item.status;
-          statusCell.appendChild(statusDiv);
-          row.appendChild(statusCell);
+      const statusCell = document.createElement('td');
+      if (item.status !== "") {
+        const statusDiv = document.createElement('div');
+        statusDiv.classList.add('status', item.status.toLowerCase());
+        statusDiv.textContent = item.status;
+        statusCell.appendChild(statusDiv);
+      }
+      row.appendChild(statusCell);
 
-          const translatorCell = document.createElement('td');
-          translatorCell.textContent = item.translator;
-          row.appendChild(translatorCell);
+      const translatorCell = document.createElement('td');
+      translatorCell.textContent = item.translator;
+      row.appendChild(translatorCell);
 
-          // Aggiungi il link (se presente)
-          const linkCell = document.createElement('td');
-          if (item.link) {
-            const link = document.createElement('a');
-            link.href = item.link;
-            link.target = "_blank";
-            link.textContent = "Apri";
-            linkCell.appendChild(link);
-          } else {
-            linkCell.textContent = "N/A";
-          }
-          row.appendChild(linkCell);
+      const linkCell = document.createElement('td');
+      if (item.link) {
+        const link = document.createElement('a');
+        link.href = item.link;
+        link.textContent = "Link";
+        linkCell.appendChild(link);
+      } else {
+        linkCell.textContent = "N/A";
+      }
+      row.appendChild(linkCell);
 
-          // Aggiungi la riga alla tabella
-          tableBody.appendChild(row);
-        });
-      })
-      .catch(error => console.error('Error:', error));
+      // Aggiungi la riga alla tabella
+      tableBody.appendChild(row);
+    });
+  })
+  .catch(error => console.error('Error:', error));
   </script>
 </body>
 </html>
