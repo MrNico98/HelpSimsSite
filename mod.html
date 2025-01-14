@@ -61,10 +61,10 @@
     }
 
     th, td {
-      border: 1px solid #ccc;
-      padding: 10px;
-      text-align: left;
-    }
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle; /* Assicura l'allineamento verticale */
+}
 
     th {
       background-color: #f4f4f4;
@@ -157,25 +157,25 @@
     /* Stile per la stella */
 .star-container {
   display: flex;
-  justify-content: center; /* Centrato orizzontalmente */
-  align-items: center; /* Centrato verticalmente */
-  width: 50px; /* Aumenta la larghezza per dare più spazio alla stella */
-  height: 50px; /* Imposta l'altezza della colonna per centrarla meglio */
+  justify-content: center; /* Allineamento orizzontale */
+  align-items: center; /* Allineamento verticale */
+  width: 50px; /* Imposta una larghezza adeguata */
+  height: 50px; /* Imposta un'altezza adeguata */
 }
 
 .star {
-  font-size: 30px; /* Aumenta la dimensione della stella */
+  font-size: 24px; /* Dimensione della stella */
   cursor: pointer;
-  color: grey;
-  display: inline-block; /* Mostra la stella grigia */
+  color: grey; /* Colore predefinito */
+  transition: transform 0.2s; /* Effetto di transizione */
 }
 
 .star.favorite {
-  color: gold; /* Stella gialla per le preferite */
+  color: gold; /* Stella preferita in giallo */
 }
 
-.mod-name:hover .star {
-  display: inline-block; /* La stella grigia è sempre visibile quando si passa sopra la mod */
+.star:hover {
+  transform: scale(1.2); /* Ingrandimento al passaggio del mouse */
 }
   </style>
 </head>
