@@ -61,10 +61,10 @@
     }
 
     th, td {
-  padding: 10px;
-  text-align: center;
-  vertical-align: middle; /* Assicura l'allineamento verticale */
-}
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
 
     th {
       background-color: #f4f4f4;
@@ -309,7 +309,7 @@ mods.forEach(mod => {
   const categories = mod.categoria ? mod.categoria.toLowerCase() : "tutte";
   newRow.setAttribute("data-categories", categories); // Aggiungi le categorie come attributo
 
-  newRow.innerHTML = `
+  newRow.innerHTML = 
     <td>
       <span class="star-container">
         <span class="star ${isFavorite ? 'favorite' : ''}" onclick="toggleFavorite('${mod.modName}')">&#9733;</span>
@@ -323,7 +323,7 @@ mods.forEach(mod => {
     <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
     <td>${mod.dependency || 'None'}</td>
     <td>${mod.status.toLowerCase() === 'aggiornata' ? today : ''}</td>
-  `;
+  ;
 });
         })
         .catch(error => console.error('Errore nel caricare il JSON:', error));
@@ -346,3 +346,4 @@ mods.forEach(mod => {
   </script>
 </body>
 </html>
+
