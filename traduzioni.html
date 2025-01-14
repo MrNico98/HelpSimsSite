@@ -6,16 +6,6 @@
   <a href="index.html" class="back-arrow">&#8592;HOME</a>
   <title>Tabella Mod</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
     .back-arrow {
       position: absolute;
       top: 10px;
@@ -32,95 +22,124 @@
       transform: scale(1.1);
     }
 
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
     .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
       background-color: #343a40;
-      padding: 20px;
-      text-align: center;
-      margin-bottom: 20px;
+      padding: 10px;
+    }
+
+    .navbar a, .navbar button {
+      color: white;
+      text-decoration: none;
+      background-color: #007bff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      margin: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-size: 16px;
+    }
+
+    .navbar a:hover, .navbar button:hover {
+      background-color: #0056b3;
+      transform: scale(1.1);
     }
 
     h1 {
-      color: white;
-      font-size: 2rem;
+      text-align: center;
+      background-color: #f8f9fa;
+      padding: 20px;
       margin: 0;
+      font-size: 2rem;
     }
 
     table {
       width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
+      border-collapse: collapse;
       margin-top: 20px;
-      border-radius: 10px;
-      overflow: hidden;
-      table-layout: auto;
     }
 
     th, td {
-      padding: 15px 20px;
+      border: 1px solid #ccc;
+      padding: 15px;
       text-align: center;
-      border: 1px solid #ddd;
-      font-size: 16px;
-      word-wrap: break-word;
     }
 
     th {
-      background-color: #007bff;
-      color: white;
-    }
-
-    td {
-      background-color: #f9f9f9;
-    }
-
-    tr:nth-child(even) td {
-      background-color: #f2f2f2;
+      background-color: #f4f4f4;
     }
 
     .status {
       color: white;
       font-weight: bold;
-      padding: 8px 12px;
+      padding: 5px;
       border-radius: 5px;
-      display: inline-block;
+      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
     }
 
     .status.compatibile {
-      background-color: #007bff; /* Blu */
+      background-color: blue;
     }
 
     .status.nuova {
-      background-color: #8a2be2; /* Viola */
+      background-color: purple;
     }
 
     .status.da-aggiornare {
-      background-color: #808080; /* Grigio */
-    }
-
-    .status.vuota {
-      background-color: #808080; /* Grigio */
+      background-color: grey;
     }
 
     .status.aggiornata {
-      background-color: #28a745; /* Verde */
+      background-color: green;
     }
 
-    .container {
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 0 15px;
-      flex: 1;
+    .status.empty {
+      background-color: transparent;
+      color: transparent;
     }
 
-    /* Stili responsivi */
-    @media (max-width: 768px) {
-      table {
-        width: 100%;
-        font-size: 14px;
-      }
+    .form-container {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
 
-      th, td {
-        padding: 10px;
-      }
+    .star-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .star {
+      font-size: 24px;
+      cursor: pointer;
+      color: grey;
+      transition: transform 0.2s;
+    }
+
+    .star.favorite {
+      color: gold;
+    }
+
+    .star:hover {
+      transform: scale(1.2);
     }
   </style>
 </head>
@@ -133,78 +152,80 @@
     <table id="modTable">
       <thead>
         <tr>
-          <th>Creatore</th>
-          <th>Titolo</th>
-          <th>Versione di Rilascio</th>
-          <th>Versione Corrente</th>
-          <th>Stato</th>
-          <th>Traduttore</th>
-          <th>Link</th> <!-- Nuova colonna per il link -->
+          <th>Creator</th>
+          <th>Title</th>
+          <th>Release Version</th>
+          <th>Current Version</th>
+          <th>Status</th>
+          <th>Translator</th>
+          <th>Link</th>
         </tr>
       </thead>
       <tbody>
-        <!-- I dati della tabella verranno popolati qui tramite JavaScript -->
+        <!-- Dati della tabella verranno popolati qui tramite JavaScript -->
       </tbody>
     </table>
   </div>
 
   <script>
     // Funzione per ottenere e visualizzare i dati della tabella
-// Funzione per ottenere e visualizzare i dati della tabella
-fetch('https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/Json/traduzioni.json')
-  .then(response => response.json())
-  .then(data => {
-    const tableBody = document.querySelector('#modTable tbody');
-    data.forEach(item => {
-      const row = document.createElement('tr');
+    fetch('https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/Json/traduzioni.json')
+      .then(response => response.json())
+      .then(data => {
+        const tableBody = document.querySelector('#modTable tbody');
+        data.forEach(item => {
+          const row = document.createElement('tr');
 
-      // Crea le celle per ogni colonna
-      const creatorCell = document.createElement('td');
-      creatorCell.textContent = item.creator;
-      row.appendChild(creatorCell);
+          // Crea le celle per ogni colonna
+          const creatorCell = document.createElement('td');
+          creatorCell.textContent = item.creator;
+          row.appendChild(creatorCell);
 
-      const titleCell = document.createElement('td');
-      titleCell.textContent = item.title;
-      row.appendChild(titleCell);
+          const titleCell = document.createElement('td');
+          titleCell.textContent = item.title;
+          row.appendChild(titleCell);
 
-      const releaseVersionCell = document.createElement('td');
-      releaseVersionCell.textContent = item.release_version;
-      row.appendChild(releaseVersionCell);
+          const releaseVersionCell = document.createElement('td');
+          releaseVersionCell.textContent = item.release_version;
+          row.appendChild(releaseVersionCell);
 
-      const currentVersionCell = document.createElement('td');
-      currentVersionCell.textContent = item.current_version;
-      row.appendChild(currentVersionCell);
+          const currentVersionCell = document.createElement('td');
+          currentVersionCell.textContent = item.current_version;
+          row.appendChild(currentVersionCell);
 
-      const statusCell = document.createElement('td');
-      if (item.status !== "") {
-        const statusDiv = document.createElement('div');
-        statusDiv.classList.add('status', item.status.toLowerCase());
-        statusDiv.textContent = item.status;
-        statusCell.appendChild(statusDiv);
-      }
-      row.appendChild(statusCell);
+          const statusCell = document.createElement('td');
+          const statusDiv = document.createElement('div');
+          if (item.status) {
+            statusDiv.classList.add('status', item.status.toLowerCase().replace(/\s/g, '-')); // Gestisce maiuscole/minuscole e spazi
+            statusDiv.textContent = item.status;
+          } else {
+            statusDiv.classList.add('status', 'empty');
+          }
+          statusCell.appendChild(statusDiv);
+          row.appendChild(statusCell);
 
-      const translatorCell = document.createElement('td');
-      translatorCell.textContent = item.translator;
-      row.appendChild(translatorCell);
+          const translatorCell = document.createElement('td');
+          translatorCell.textContent = item.translator;
+          row.appendChild(translatorCell);
 
-      const linkCell = document.createElement('td');
-      if (item.link) {
-        const link = document.createElement('a');
-        link.href = item.link;
-        link.textContent = "Link";
-        linkCell.appendChild(link);
-      } else {
-        linkCell.textContent = "N/A";
-      }
-      row.appendChild(linkCell);
+          const linkCell = document.createElement('td');
+          if (item.link) {
+            const link = document.createElement('a');
+            link.href = item.link;
+            link.textContent = "Link";
+            linkCell.appendChild(link);
+          } else {
+            linkCell.textContent = "N/A";
+          }
+          row.appendChild(linkCell);
 
-      // Aggiungi la riga alla tabella
-      tableBody.appendChild(row);
-    });
-  })
-  .catch(error => console.error('Error:', error));
+          // Aggiungi la riga alla tabella
+          tableBody.appendChild(row);
+        });
+      })
+      .catch(error => console.error('Error:', error));
   </script>
 </body>
 </html>
+
 
