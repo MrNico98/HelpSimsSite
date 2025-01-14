@@ -30,33 +30,6 @@
       text-align: center;
     }
 
-    .navbar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      background-color: #343a40;
-      padding: 10px;
-    }
-
-    .navbar a, .navbar button {
-      color: white;
-      text-decoration: none;
-      background-color: #007bff;
-      padding: 10px 20px;
-      border-radius: 5px;
-      border: none;
-      margin: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      font-size: 16px;
-    }
-
-    .navbar a:hover, .navbar button:hover {
-      background-color: #0056b3;
-      transform: scale(1.1);
-    }
-
     h1 {
       text-align: center;
       background-color: #f8f9fa;
@@ -66,11 +39,9 @@
     }
 
     table {
-      width: 80%;
+      width: 100%; /* La tabella occupa tutta la larghezza della pagina */
       border-collapse: collapse;
       margin-top: 20px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     th, td {
@@ -132,12 +103,6 @@
         font-size: 1.5rem;
         padding: 10px;
       }
-
-      .navbar a, .navbar button {
-        font-size: 14px;
-        padding: 10px;
-        width: 100%;
-      }
     }
   </style>
 </head>
@@ -153,16 +118,26 @@
         <th>NOTE</th>
       </tr>
     </thead>
+    <tbody>
+      <!-- Le righe verranno caricate dinamicamente dal JSON -->
+    </tbody>
   </table>
 
   <script>
-    fetch('https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/Json/animazioniww18.json')
-      .then(response => response.json())
+    // Verifica che il percorso del file JSON sia corretto e carica i dati
+    fetch('https://raw.githubusercontent.com/MrNico98/HelpSimsSite/main/Json/animazioniww18.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Errore nella richiesta del JSON: ' + response.status);
+        }
+        return response.json();
+      })
       .then(data => {
         const tableBody = document.querySelector('#animazioni-table tbody');
         data.forEach(animazione => {
           const row = document.createElement('tr');
 
+          // Crea una riga per ogni oggetto JSON
           row.innerHTML = `
             <td>${animazione.autore}</td>
             <td class="status ${animazione.stato.toLowerCase()}">${animazione.stato}</td>
@@ -176,7 +151,9 @@
       })
       .catch(error => {
         console.error('Errore nel caricamento del JSON:', error);
+        document.querySelector('h1').innerText = "Errore nel caricamento dei dati";
       });
   </script>
 </body>
 </html>
+
