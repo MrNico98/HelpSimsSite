@@ -3,8 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <a href="index.html" class="back-arrow">&#8592; Indietro</a>
   <title>Tabella Mod</title>
   <style>
+      .back-arrow {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #007bff;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+
+  .back-arrow:hover {
+    color: #0056b3;
+    transform: scale(1.1);
+  }
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
@@ -188,7 +204,6 @@
   <a href="#">TRADUZIONI</a>
   <a href="#">PROGRAMMI</a>
   <button onclick="toggleTable()">Lista MOD</button>
-  <button onclick="goBack()">Indietro</button> <!-- Pulsante Indietro -->
 </div>
 
   <div class="form-container">
@@ -239,9 +254,6 @@
   </table>
 
   <script>
-      function goBack() {
-    window.location.href = "index.html"; // Reindirizza a index.html
-  }
     function filterTable() {
       const searchInput = document.getElementById("search").value.toLowerCase();
       const filterStatus = document.getElementById("filter-status").value.toLowerCase();
