@@ -309,21 +309,21 @@ mods.forEach(mod => {
   const categories = mod.categoria ? mod.categoria.toLowerCase() : "tutte";
   newRow.setAttribute("data-categories", categories); // Aggiungi le categorie come attributo
 
-  newRow.innerHTML = 
-    <td>
-      <span class="star-container">
-        <span class="star ${isFavorite ? 'favorite' : ''}" onclick="toggleFavorite('${mod.modName}')">&#9733;</span>
-      </span>
-    </td>
-    <td>${mod.author}</td>
-    <td class="mod-name">${mod.modName}</td>
-    <td><span class="status ${mod.status}">${mod.status.toUpperCase()}</span></td>
-    <td><a href="${mod.siteLink}" target="_blank">Visita</a></td>
-    <td><a href="${mod.directLink}" target="_blank">Scarica</a></td>
-    <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
-    <td>${mod.dependency || 'None'}</td>
-    <td>${mod.status.toLowerCase() === 'aggiornata' ? today : ''}</td>
-  ;
+newRow.innerHTML = `
+  <td>
+    <span class="star-container">
+      <span class="star ${isFavorite ? 'favorite' : ''}" onclick="toggleFavorite('${mod.modName}')">&#9733;</span>
+    </span>
+  </td>
+  <td>${mod.author}</td>
+  <td class="mod-name">${mod.modName}</td>
+  <td><span class="status ${mod.status}">${mod.status.toUpperCase()}</span></td>
+  <td><a href="${mod.siteLink}" target="_blank">Visita</a></td>
+  <td><a href="${mod.directLink}" target="_blank">Scarica</a></td>
+  <td><span class="traduzione ${mod.translation}">${mod.translation.replace("-", " ").toUpperCase()}</span></td>
+  <td>${mod.dependency || 'None'}</td>
+  <td>${mod.status.toLowerCase() === 'aggiornata' ? today : ''}</td>
+`;
 });
         })
         .catch(error => console.error('Errore nel caricare il JSON:', error));
