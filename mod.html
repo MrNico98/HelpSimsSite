@@ -285,7 +285,7 @@
     }
 
     function loadModsFromJson() {
-      fetch('https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/mods.json')
+      fetch('https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/Json/mods.json')
         .then(response => response.json())
         .then(mods => {
           const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
