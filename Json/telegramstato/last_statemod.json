@@ -2,9 +2,21 @@
   {
     "author": "Adeepindigo",
     "modName": "Babysitting Gigs",
-    "status": "",
-    "link": "https://adeepindigomods.itch.io/babysitting-gigs",
+    "status": "aggiornata",
+    "siteLink": "https://adeepindigomods.itch.io/babysitting-gigs",
+    "directLink": "https://example.com/mod1-download",
     "translation": "da-scaricare",
-    "dependency": "General Pie Menus - DLC Vita sull'Isola - DLC Raccomandato (Genitorialit\u00e0)"
+    "categoria": "medico, dottore",
+    "dependency": "General Pie Menus - DLC Vita sull'Isola - DLC Raccomandato (Genitorialit\ufffd)"
+  },
+  {
+    "author": "Adeepindigo",
+    "modName": "Better Daycare",
+    "status": "aggiornata",
+    "siteLink": "https://adeepindigomods.itch.io/better-daycare",
+    "directLink": "https://example.com/mod1-download",
+    "translation": "da-scaricare",
+    "categoria": "polizia",
+    "dependency": "Core Library"
   }
 ]
