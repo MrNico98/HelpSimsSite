@@ -33,10 +33,30 @@
     }
 
     .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
       background-color: #343a40;
-      padding: 20px;
-      text-align: center;
-      margin-bottom: 20px;
+      padding: 10px;
+    }
+
+    .navbar a, .navbar button {
+      color: white;
+      text-decoration: none;
+      background-color: #007bff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      margin: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-size: 16px;
+    }
+
+    .navbar a:hover, .navbar button:hover {
+      background-color: #0056b3;
+      transform: scale(1.1);
     }
 
     h1 {
@@ -111,22 +131,84 @@
       flex: 1;
     }
 
-    /* Stili responsivi */
+    /* Stili per i bottoni */
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .button-container button {
+      width: 200px;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .button-container button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Media Queries */
     @media (max-width: 768px) {
       table {
-        width: 100%;
         font-size: 14px;
       }
 
       th, td {
         padding: 10px;
       }
+
+      .back-arrow {
+        font-size: 18px;
+      }
+
+      .navbar h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .button-container button {
+        width: 100%;
+      }
+      .navbar a, .navbar button {
+        font-size: 14px;
+        padding: 10px;
+        width: 100%;
+      }
+      h1 {
+        font-size: 1.2rem;
+      }
+
+      table {
+        font-size: 12px;
+      }
+
+      th, td {
+        padding: 8px;
+      }
+
+      .back-arrow {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="navbar">
-    <h1>Tabella Mod - Traduzioni</h1>
+    <a href="mod.html">MOD</a>
+    <a href="#">MOD +18</a>
+    <a href="#">ANIMAZIONI WICKED WHIMS +18</a>
+    <a href="#">TRADUZIONI</a>
+    <a href="#">PROGRAMMI</a>
+    <button onclick="toggleTable()">Lista MOD</button>
   </div>
 
   <div class="container">
@@ -139,7 +221,7 @@
           <th>Versione Corrente</th>
           <th>Stato</th>
           <th>Traduttore</th>
-          <th>Link</th> <!-- Nuova colonna per il link -->
+          <th>Link</th>
         </tr>
       </thead>
       <tbody>
@@ -209,3 +291,4 @@
   </script>
 </body>
 </html>
+
