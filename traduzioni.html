@@ -11,6 +11,9 @@
       background-color: #f4f4f4;
       margin: 0;
       padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     .back-arrow {
@@ -33,6 +36,7 @@
       background-color: #343a40;
       padding: 20px;
       text-align: center;
+      margin-bottom: 20px;
     }
 
     h1 {
@@ -48,6 +52,7 @@
       margin-top: 20px;
       border-radius: 10px;
       overflow: hidden;
+      table-layout: auto;
     }
 
     th, td {
@@ -55,6 +60,7 @@
       text-align: center;
       border: 1px solid #ddd;
       font-size: 16px;
+      word-wrap: break-word;
     }
 
     th {
@@ -99,9 +105,10 @@
     }
 
     .container {
-      max-width: 1000px;
-      margin: 30px auto;
+      max-width: 100%;
+      margin: 0 auto;
       padding: 0 15px;
+      flex: 1;
     }
 
     /* Stili responsivi */
@@ -132,6 +139,7 @@
           <th>Versione Corrente</th>
           <th>Stato</th>
           <th>Traduttore</th>
+          <th>Link</th> <!-- Nuova colonna per il link -->
         </tr>
       </thead>
       <tbody>
@@ -177,6 +185,19 @@
           translatorCell.textContent = item.translator;
           row.appendChild(translatorCell);
 
+          // Aggiungi il link (se presente)
+          const linkCell = document.createElement('td');
+          if (item.link) {
+            const link = document.createElement('a');
+            link.href = item.link;
+            link.target = "_blank";
+            link.textContent = "Apri";
+            linkCell.appendChild(link);
+          } else {
+            linkCell.textContent = "N/A";
+          }
+          row.appendChild(linkCell);
+
           // Aggiungi la riga alla tabella
           tableBody.appendChild(row);
         });
@@ -185,3 +206,4 @@
   </script>
 </body>
 </html>
+
