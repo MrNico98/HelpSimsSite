@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <a href="index.html" class="back-arrow">&#8592;HOME</a>
+  <title>Tabella Mod</title>
+  <style>
+      .back-arrow {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #007bff;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+
+  .back-arrow:hover {
+    color: #0056b3;
+    transform: scale(1.1);
+  }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #343a40;
+      padding: 10px;
+    }
+
+    .navbar a, .navbar button {
+      color: white;
+      text-decoration: none;
+      background-color: #007bff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      margin: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-size: 16px;
+    }
+
+    .navbar a:hover, .navbar button:hover {
+      background-color: #0056b3;
+      transform: scale(1.1);
+    }
+
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      background-color: #f8f9fa;
+      padding: 20px;
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    input, select {
+      margin: 10px 5px;
+      padding: 5px;
+    }
+
+    .status {
+      color: white;
+      font-weight: bold;
+      padding: 5px;
+      border-radius: 5px;
+      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+      width: 100%;
+      height: 100%;
+    }
+
+    .status.compatibile {
+      background-color: blue;
+    }
+
+    .status.rotta {
+      background-color: red;
+    }
+
+    .status.aggiornata {
+      background-color: green;
+    }
+
+    .traduzione {
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .traduzione.inclusa {
+      background-color: yellow;
+      color: black;
+    }
+
+    .traduzione.non-necessaria {
+      background-color: green;
+      color: white;
+    }
+
+    .traduzione.in-lavorazione {
+      background-color: lightblue;
+      color: black;
+    }
+
+    .traduzione.da-scaricare {
+      background-color: orange;
+      color: black;
+    }
+
+    .form-container {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    .favorite {
+      color: gold;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* Media Query per i dispositivi mobili */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+        padding: 10px;
+      }
+
+      .navbar a, .navbar button {
+        font-size: 14px;
+        padding: 10px;
+        width: 100%;
+      }
+    }
+
+    /* Stile per la stella */
+.star-container {
+  display: flex;
+  justify-content: center; /* Allinea orizzontalmente al centro */
+  align-items: center;    /* Allinea verticalmente al centro */
+  width: 100%;            /* Assicurati che occupi tutta la cella */
+  height: 100%;
+}
+
+.star {
+  font-size: 24px; /* Dimensione della stella */
+  cursor: pointer;
+  color: grey; /* Colore predefinito */
+  transition: transform 0.2s; /* Effetto di transizione */
+}
+
+.star.favorite {
+  color: gold; /* Stella preferita in giallo */
+}
+
+.star:hover {
+  transform: scale(1.2); /* Ingrandimento al passaggio del mouse */
+}
+  </style>
+</head>
+<body>
+  <h1>Animazioni WW +18</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>AUTORE</th>
+        <th>STATO</th>
+        <th>LINK ANIMAZIONE</th>
+        <th>DATA AGGIORNAMENTO</th>
+        <th>NOTE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Amra72's</td>
+        <td class="status compatibile">COMPATIBILE</td>
+        <td><a href="https://www.loverslab.com/files/file/3140-wip-amra72s-sex-animation-for-wickedwhims/" target="_blank">Link</a></td>
+        <td>30/07/24</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Anarcis</td>
+        <td class="status compatibile">COMPATIBILE</td>
+        <td><a href="https://www.loverslab.com/files/file/3526-sims-4-anarcis-animations-for-wickedwhims/" target="_blank">Link</a></td>
+        <td>19/12/24</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Azmodan22</td>
+        <td class="status compatibile">COMPATIBILE</td>
+        <td><a href="https://www.loverslab.com/files/file/3528-azmodan22-whickedwhims-sex-animations-update-31-01-2024-51-animations/" target="_blank">Link</a></td>
+        <td>16/12/24</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
