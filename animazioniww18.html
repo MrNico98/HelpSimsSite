@@ -22,6 +22,33 @@
       transform: scale(1.1);
     }
 
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #343a40;
+      padding: 10px;
+    }
+
+    .navbar a, .navbar button {
+      color: white;
+      text-decoration: none;
+      background-color: #007bff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      margin: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-size: 16px;
+    }
+
+    .navbar a:hover, .navbar button:hover {
+      background-color: #0056b3;
+      transform: scale(1.1);
+    }
+
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
@@ -31,48 +58,43 @@
     }
 
     h1 {
-      background-color: #007bff;
       color: white;
-      padding: 20px;
-      margin: 0;
       font-size: 2rem;
-      border-bottom: 2px solid #ccc;
+      margin: 0;
+      padding: 20px 0;
+      background-color: #343a40;
+      text-align: center;
     }
 
     table {
-      width: 90%; /* La tabella occupa il 90% della larghezza */
-      border-collapse: collapse;
-      margin: 20px auto; /* Centra la tabella */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      table-layout: auto;
     }
 
     th, td {
-      border: 1px solid #ddd;
-      padding: 12px 15px;
+      padding: 15px 20px;
       text-align: center;
-      vertical-align: middle;
+      border: 1px solid #ddd;
+      font-size: 16px;
+      word-wrap: break-word;
     }
 
     th {
       background-color: #007bff;
       color: white;
-      font-size: 16px;
     }
 
     td {
-      background-color: #fff;
-      font-size: 14px;
-      color: #333;
-      word-wrap: break-word;
+      background-color: #f9f9f9;
     }
 
-    td a {
-      text-decoration: none;
-      color: #007bff;
-    }
-
-    td a:hover {
-      text-decoration: underline;
+    tr:nth-child(even) td {
+      background-color: #f2f2f2;
     }
 
     .status {
@@ -84,7 +106,6 @@
       height: auto;
     }
 
-    /* Modifica per la colonna stato */
     .status.compatibile {
       background-color: blue;
       color: white;
@@ -100,21 +121,6 @@
       color: white;
     }
 
-    .form-container {
-      margin-top: 20px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      background-color: #f9f9f9;
-    }
-
-    .favorite {
-      color: gold;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    /* Media Query per i dispositivi mobili */
     @media (max-width: 600px) {
       h1 {
         font-size: 1.5rem;
@@ -132,6 +138,14 @@
 </head>
 <body>
   <h1>Animazioni WW +18</h1>
+  <div class="navbar">
+    <a href="mod.html">MOD</a>
+    <a href="#">MOD +18</a>
+    <a href="animazioniww18.html">ANIMAZIONI WICKED WHIMS +18</a>
+    <a href="traduzioni.html">TRADUZIONI</a>
+    <a href="#">PROGRAMMI</a>
+    <button onclick="toggleTable()">Lista MOD</button>
+  </div>
   <table id="animazioni-table">
     <thead>
       <tr>
@@ -179,3 +193,4 @@
   </script>
 </body>
 </html>
+
