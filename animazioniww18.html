@@ -169,23 +169,46 @@
         }
         return response.json();
       })
-      .then(data => {
-        const tableBody = document.querySelector('#animazioni-table tbody');
-        data.forEach(animazione => {
-          const row = document.createElement('tr');
+.then(data => {
+  const tableBody = document.querySelector('#animazioni-table tbody');
+  data.forEach(animazione => {
+    const row = document.createElement('tr');
 
-          // Crea una riga per ogni oggetto JSON
-          row.innerHTML = `
-            <td>${animazione.autore}</td>
-            <td class="status ${animazione.stato.toLowerCase()}">${animazione.stato}</td>
-            <td><a href="${animazione.link}" target="_blank">Link</a></td>
-            <td>${animazione.data_aggiornamento}</td>
-            <td>${animazione.note || ''}</td>
-          `;
+    // Crea le celle
+    const autoreCell = document.createElement('td');
+    autoreCell.textContent = animazione.autore;
+    row.appendChild(autoreCell);
 
-          tableBody.appendChild(row);
-        });
-      })
+    const statoCell = document.createElement('td');
+    if (animazione.stato) {
+      const statoDiv = document.createElement('div');
+      statoDiv.classList.add('status', animazione.stato.toLowerCase().replace(/\s/g, '-'));
+      statoDiv.textContent = animazione.stato;
+      statoCell.appendChild(statoDiv);
+    } else {
+      statoCell.textContent = 'N/A'; // Gestisce lo stato vuoto
+    }
+    row.appendChild(statoCell);
+
+    const linkCell = document.createElement('td');
+    const link = document.createElement('a');
+    link.href = animazione.link;
+    link.target = '_blank';
+    link.textContent = 'Link';
+    linkCell.appendChild(link);
+    row.appendChild(linkCell);
+
+    const dataCell = document.createElement('td');
+    dataCell.textContent = animazione.data_aggiornamento;
+    row.appendChild(dataCell);
+
+    const noteCell = document.createElement('td');
+    noteCell.textContent = animazione.note || '';
+    row.appendChild(noteCell);
+
+    tableBody.appendChild(row);
+  });
+})
       .catch(error => {
         console.error('Errore nel caricamento del JSON:', error);
         document.querySelector('h1').innerText = "Errore nel caricamento dei dati";
