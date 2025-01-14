@@ -181,14 +181,15 @@
 </head>
 <body>
   <h1>Tabella Mod</h1>
-  <div class="navbar">
-    <a href="mod.html">MOD</a>
-    <a href="#">MOD +18</a>
-    <a href="#">ANIMAZIONI WICKED WHIMS +18</a>
-    <a href="#">TRADUZIONI</a>
-    <a href="#">PROGRAMMI</a>
-    <button onclick="toggleTable()">Lista MOD</button>
-  </div>
+<div class="navbar">
+  <a href="mod.html">MOD</a>
+  <a href="#">MOD +18</a>
+  <a href="#">ANIMAZIONI WICKED WHIMS +18</a>
+  <a href="#">TRADUZIONI</a>
+  <a href="#">PROGRAMMI</a>
+  <button onclick="toggleTable()">Lista MOD</button>
+  <button onclick="goBack()">Indietro</button> <!-- Pulsante Indietro -->
+</div>
 
   <div class="form-container">
     <label for="search">Cerca:</label>
@@ -238,6 +239,9 @@
   </table>
 
   <script>
+      function goBack() {
+    window.location.href = "index.html"; // Reindirizza a index.html
+  }
     function filterTable() {
       const searchInput = document.getElementById("search").value.toLowerCase();
       const filterStatus = document.getElementById("filter-status").value.toLowerCase();
