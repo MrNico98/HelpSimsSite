@@ -1,50 +1,247 @@
-[
-  {
-    "creator": "Adeepindigo",
-    "title": "Writing and Writer Career Overhaul",
-    "release_version": "29/08/2024",
-    "current_version": "07/08/2024",
-    "status": "COMPATIBILE",
-    "translator": "di LoryNa"
-  },
-  {
-    "creator": "Adeepindigo/ItsKatato",
-    "title": "Preteens",
-    "release_version": "1.8.5",
-    "current_version": "1.8.5",
-    "status": "NUOVA",
-    "translator": "di vale93_games"
-  },
-  {
-    "creator": "AlainBM",
-    "title": "Dreams & Nightmares",
-    "release_version": "2.0.0",
-    "current_version": "1.6.5",
-    "status": "DA AGGIORNARE",
-    "translator": "di SimTecnologic"
-  },
-  {
-    "creator": "Andirz",
-    "title": "Auto Service Career",
-    "release_version": "2.2.1",
-    "current_version": "2.2.1",
-    "status": "",
-    "translator": "di vale93_games"
-  },
-  {
-    "creator": "Andirz",
-    "title": "Better Live Shopping",
-    "release_version": "2.1.4",
-    "current_version": "2.1.4",
-    "status": "COMPATIBILE",
-    "translator": "di vale93_games"
-  },
-  {
-    "creator": "Andirz",
-    "title": "P.S.O. Shared Library",
-    "release_version": "1.7.1",
-    "current_version": "1.8.0",
-    "status": "AGGIORNATA",
-    "translator": "di vale93_games"
-  }
-]
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <a href="index.html" class="back-arrow">&#8592;HOME</a>
+  <title>Tabella Mod</title>
+  <style>
+    .back-arrow {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      text-decoration: none;
+      font-size: 20px;
+      color: #007bff;
+      font-weight: bold;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    .back-arrow:hover {
+      color: #0056b3;
+      transform: scale(1.1);
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #343a40;
+      padding: 10px;
+    }
+
+    .navbar a, .navbar button {
+      color: white;
+      text-decoration: none;
+      background-color: #007bff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      margin: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-size: 16px;
+    }
+
+    .navbar a:hover, .navbar button:hover {
+      background-color: #0056b3;
+      transform: scale(1.1);
+    }
+
+    h1 {
+      text-align: center;
+      background-color: #f8f9fa;
+      padding: 20px;
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    .status {
+      color: white;
+      font-weight: bold;
+      padding: 5px;
+      border-radius: 5px;
+      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+      width: 100%;
+      height: 100%;
+    }
+
+    .status.compatibile {
+      background-color: blue;
+    }
+
+    .status.rotta {
+      background-color: red;
+    }
+
+    .status.aggiornata {
+      background-color: green;
+    }
+
+    .traduzione {
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .traduzione.inclusa {
+      background-color: yellow;
+      color: black;
+    }
+
+    .traduzione.non-necessaria {
+      background-color: green;
+      color: white;
+    }
+
+    .traduzione.in-lavorazione {
+      background-color: lightblue;
+      color: black;
+    }
+
+    .traduzione.da-scaricare {
+      background-color: orange;
+      color: black;
+    }
+
+    .form-container {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    /* Media Query per i dispositivi mobili */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+        padding: 10px;
+      }
+
+      .navbar a, .navbar button {
+        font-size: 14px;
+        padding: 10px;
+        width: 100%;
+      }
+    }
+
+    .star-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .star {
+      font-size: 24px;
+      cursor: pointer;
+      color: grey;
+      transition: transform 0.2s;
+    }
+
+    .star.favorite {
+      color: gold;
+    }
+
+    .star:hover {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <h1>Tabella Mod - Traduzioni</h1>
+  </div>
+
+  <div class="container">
+    <table id="modTable">
+      <thead>
+        <tr>
+          <th>Creator</th>
+          <th>Title</th>
+          <th>Release Version</th>
+          <th>Current Version</th>
+          <th>Status</th>
+          <th>Translator</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dati della tabella verranno popolati qui tramite JavaScript -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // Funzione per ottenere e visualizzare i dati della tabella
+    fetch('https://raw.githubusercontent.com/MrNico98/HelpSimsSite/main/Json/animazioniww18.json')
+      .then(response => response.json())
+      .then(data => {
+        const tableBody = document.querySelector('#modTable tbody');
+        data.forEach(item => {
+          const row = document.createElement('tr');
+
+          // Crea le celle per ogni colonna
+          const creatorCell = document.createElement('td');
+          creatorCell.textContent = item.creator;
+          row.appendChild(creatorCell);
+
+          const titleCell = document.createElement('td');
+          titleCell.textContent = item.title;
+          row.appendChild(titleCell);
+
+          const releaseVersionCell = document.createElement('td');
+          releaseVersionCell.textContent = item.release_version;
+          row.appendChild(releaseVersionCell);
+
+          const currentVersionCell = document.createElement('td');
+          currentVersionCell.textContent = item.current_version;
+          row.appendChild(currentVersionCell);
+
+          const statusCell = document.createElement('td');
+          const statusDiv = document.createElement('div');
+          statusDiv.classList.add('status', item.status.toLowerCase());
+          statusDiv.textContent = item.status;
+          statusCell.appendChild(statusDiv);
+          row.appendChild(statusCell);
+
+          const translatorCell = document.createElement('td');
+          translatorCell.textContent = item.translator;
+          row.appendChild(translatorCell);
+
+          // Aggiungi la riga alla tabella
+          tableBody.appendChild(row);
+        });
+      })
+      .catch(error => console.error('Error:', error));
+  </script>
+</body>
+</html>
