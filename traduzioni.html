@@ -97,7 +97,7 @@
     }
 
     .status.vuota {
-      background-color: #808080; /* Grigio */
+      background-color: transparent; /* Lascia la cella vuota */
     }
 
     .status.aggiornata {
@@ -181,10 +181,8 @@
             statusDiv.textContent = item.status;
             statusCell.appendChild(statusDiv);
           } else {
-            const emptyStatusDiv = document.createElement('div');
-            emptyStatusDiv.classList.add('status', 'vuota');
-            emptyStatusDiv.textContent = "";
-            statusCell.appendChild(emptyStatusDiv);
+            // Se status è vuoto, lascia la cella vuota
+            statusCell.textContent = '';
           }
           row.appendChild(statusCell);
 
@@ -211,5 +209,3 @@
   </script>
 </body>
 </html>
-
-
