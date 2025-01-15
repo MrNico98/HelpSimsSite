@@ -1,8 +1,9 @@
 name: Monitor Mods
 
 on:
-  schedule:
-    - cron: '0 * * * *' # Esegui ogni ora
+  push:
+    paths:
+      - 'Json/mods.json' # Avvia il workflow solo se viene modificato Json/mods.json
   workflow_dispatch: # Permette di avviare manualmente il workflow
 
 jobs:
@@ -27,7 +28,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GROUP_ID: '-1001771715212'
         TOPIC_ID: '79558'
-        MODS_URL: 'https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/mods.json'
+        MODS_URL: 'https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/Json/mods.json'
         STATE_URL: 'https://raw.githubusercontent.com/MrNico98/HelpSimsSite/refs/heads/main/last_state.json'
         REPO_API_URL: 'https://api.github.com/repos/MrNico98/HelpSimsSite/contents/last_state.json'
       run: python app.py
